@@ -1,0 +1,144 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #4e73df;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    padding: 40px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #4e73df;
+    font-weight: 600;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4e73df;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4e73df;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2e59a5;
+}
+
+pre {
+    background-color: #2e3b56;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+    height: 90%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+footer {
+    background-color: #4e73df;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+}

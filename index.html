@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Code Playground</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cypress Test Playground</h1>
+        <p>Explore and experiment with Cypress commands in real-time!</p>
+    </header>
+    <main class="content">
+        <section class="commands">
+            <h2>Useful Commands</h2>
+            <ul>
+                <li><strong>cy.visit(url)</strong> - Navigate to a page</li>
+                <li><strong>cy.get(selector)</strong> - Get DOM elements</li>
+                <li><strong>cy.contains(text)</strong> - Find elements by text</li>
+                <li><strong>cy.request(method, url)</strong> - Make an HTTP request</li>
+                <li><strong>cy.exec(cmd)</strong> - Execute a system command</li>
+                <li><strong>cy.log(message)</strong> - Print a message to the Cypress Command Log</li>
+            </ul>
+        </section>
+        <section class="code-snippet">
+            <h2>Test Code</h2>
+            <textarea id="codeInput" placeholder="Write your Cypress test here..."></textarea>
+            <button onclick="runCode()">Run Test</button>
+        </section>
+        <section class="output">
+            <h2>Test Output</h2>
+            <pre id="outputArea"></pre>
+        </section>
+    </main>
+    <footer>
+        <p>Powered by Talking About Testing</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
