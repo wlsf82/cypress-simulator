@@ -1,0 +1,16 @@
+{
+  "name": "cypress-test-playground",
+  "version": "1.0.0",
+  "description": "Explore and experiment with Cypress commands in real-time!",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run"
+  },
+  "keywords": [],
+  "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}
