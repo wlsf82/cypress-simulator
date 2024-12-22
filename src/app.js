@@ -6,7 +6,11 @@ function runCode() {
   outputArea.textContent = "Running... Please wait.";
 
   setTimeout(() => {
-      // In real-world cases, we'd send the code to a backend for evaluation
-      outputArea.textContent = `Code executed successfully:\n\n${code}`;
+    const message = Math.random() < 0.01
+      ? "There's a glitch in the Matrix"
+      : `Code executed successfully:\n\n${code}`;
+
+    // In real-world cases, we'd send the code to a backend for evaluation
+    outputArea.textContent = message;
   }, 2000);
 }
