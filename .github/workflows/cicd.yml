@@ -12,6 +12,7 @@ jobs:
       - name: Run Cypress tests locally 🧪
         uses: cypress-io/github-action@v6
   deploy:
+    needs: cypress-tests
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout
