@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   logoutButton.addEventListener('click', () => {
+    document.getElementById('codeInput').value = '';
     loginForm.style.display = 'flex';
     mainContent.style.display = 'none';
     sandwichMenu.style.display = 'none';
