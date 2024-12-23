@@ -11,6 +11,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Run Cypress tests locally 🧪
         uses: cypress-io/github-action@v6
+        with:
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
   deploy:
     needs: cypress-tests
     runs-on: ubuntu-22.04
