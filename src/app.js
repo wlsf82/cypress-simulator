@@ -1,23 +1,57 @@
-const codeInput = document.getElementById('codeInput');
-const runButton = document.getElementById('runButton');
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('login');
+  const loginButton = document.querySelector('#login form button');
+  const mainContent = document.querySelector('.content');
+  const logoutButton = document.getElementById('logoutButton');
+  const sandwichMenu = document.getElementById('sandwich-menu');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+  const codeInput = document.getElementById('codeInput');
+  const runButton = document.getElementById('runButton');
 
-codeInput.addEventListener('input', () => {
-  runButton.disabled = !codeInput.value.trim();
+  lucide.createIcons();
+
+  loginButton.addEventListener('click', event => {
+    event.preventDefault();
+    loginForm.style.display = 'none';
+    mainContent.style.display = 'flex';
+    sandwichMenu.style.display = 'flex';
+  });
+
+  sandwichMenu.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('show');
+  });
+
+  document.addEventListener('click', event => {
+    if (!sandwichMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.classList.remove('show');
+    }
+  });
+
+  logoutButton.addEventListener('click', () => {
+    loginForm.style.display = 'flex';
+    mainContent.style.display = 'none';
+    sandwichMenu.style.display = 'none';
+    dropdownMenu.classList.remove('show');
+  });
+
+  codeInput.addEventListener('input', () => {
+    runButton.disabled = !codeInput.value.trim();
+  });
+
+  runButton.addEventListener('click', runCode);
+
+  function runCode() {
+    const code = document.getElementById('codeInput').value;
+    const outputArea = document.getElementById('outputArea');
+
+    outputArea.textContent = "Running... Please wait.";
+
+    setTimeout(() => {
+      const message = Math.random() < 0.01
+        ? "There's a glitch in the Matrix"
+        : `Code executed successfully:\n\n${code}`;
+
+      outputArea.textContent = message;
+    }, 2000);
+  }
 });
-
-function runCode() {
-  const code = document.getElementById('codeInput').value;
-  const outputArea = document.getElementById('outputArea');
-
-  // Simulating running the code
-  outputArea.textContent = "Running... Please wait.";
-
-  setTimeout(() => {
-    const message = Math.random() < 0.01
-      ? "There's a glitch in the Matrix"
-      : `Code executed successfully:\n\n${code}`;
-
-    // In real-world cases, we'd send the code to a backend for evaluation
-    outputArea.textContent = message;
-  }, 2000);
-}

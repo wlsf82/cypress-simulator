@@ -1,7 +1,10 @@
-describe('Cypress Test Playground', () => {
+const options = { viewportWidth: 1700, viewportHeight: 1024 }
+
+describe('Cypress Test Playground', options, () => {
   beforeEach(() => {
     cy.clock()
     cy.visit('./src/index.html')
+    cy.contains('button', 'Login').click()
   })
 
   Cypress._.times(100, () => {
@@ -26,5 +29,13 @@ describe('Cypress Test Playground', () => {
     cy.get('textarea').clear()
 
     cy.contains('button', 'Run').should('be.disabled')
+  })
+
+  it('successfully logs out', () => {
+    cy.get('#sandwich-menu').click()
+    cy.contains('button', 'Logout').click()
+
+    cy.contains('button', 'Login').should('be.visible')
+    cy.get('#sandwich-menu').should('not.be.visible')
   })
 })

@@ -5,12 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Code Playground</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
   <header>
     <h1>Cypress Test Playground</h1>
     <p>Explore and experiment with Cypress commands in real-time!</p>
+    <div class="header-actions">
+      <div id="sandwich-menu" class="sandwich-menu">
+        <i data-lucide="menu"></i>
+      </div>
+      <nav id="dropdown-menu" class="dropdown-menu">
+        <button id="logoutButton">Logout</button>
+      </nav>
+    </div>
   </header>
+  <main id="login">
+    <h2>Let's get started!</h2>
+    <form>
+      <button>Login</button>
+    </form>
+  </main>
   <main class="content">
     <section class="commands">
       <h2>Useful Commands</h2>
@@ -26,7 +41,7 @@
     <section class="code-snippet">
       <h2>Cypress Code</h2>
       <textarea id="codeInput" placeholder="Write your Cypress code here..."></textarea>
-      <button id="runButton" onclick="runCode()" disabled>Run</button>
+      <button id="runButton" disabled>Run</button>
     </section>
     <section class="output">
       <h2>Cypress Output</h2>
