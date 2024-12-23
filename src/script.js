@@ -47,11 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
     outputArea.textContent = "Running... Please wait.";
 
     setTimeout(() => {
-      const message = Math.random() < 0.01
-        ? "There's a glitch in the Matrix"
+      if (code === 'help') {
+        outputArea.innerHTML = `Visit the below URL, then access the Commands link on the left menu item to get a list of all available Cypress commands:\n\n<a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">https://docs.cypress.io/api/table-of-contents</a>`;
+      } else {
+        const message = Math.random() < 0.01
+        ? "There's a glitch in the Matrix."
         : `Code executed successfully:\n\n${code}`;
 
-      outputArea.textContent = message;
+        outputArea.textContent = message;
+      }
     }, 2000);
   }
 });

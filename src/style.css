@@ -166,15 +166,24 @@ pre {
   height: 90%;
 }
 
+#outputArea a {
+  color: white;
+}
+
 ul {
   list-style-type: none;
   padding: 10px;
 }
 
+.code-snippet p,
 li {
   margin-bottom: 12px;
   font-size: 1rem;
   font-family: 'Courier New', monospace;
+}
+
+.code-snippet p pre {
+  color: #000000;
 }
 
 footer {
