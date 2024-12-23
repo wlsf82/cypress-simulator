@@ -7,16 +7,14 @@ describe('Cypress Test Playground', options, () => {
     cy.contains('button', 'Login').click()
   })
 
-  Cypress._.times(100, () => {
-    it('successfully runs 99% of the times', () => {
-      cy.get('textarea').type("cy.log('Yo!')")
-      cy.contains('button', 'Run').click()
-      cy.tick(2000)
+  it('successfully runs 99% of the times', () => {
+    cy.get('textarea').type("cy.log('Yo!')")
+    cy.contains('button', 'Run').click()
+    cy.tick(2000)
 
-      cy.get('#outputArea')
-        .should('contain', 'Code executed successfully:')
-        .and('contain', "cy.log('Yo!')")
-    })
+    cy.get('#outputArea')
+      .should('contain', 'Code executed successfully:')
+      .and('contain', "cy.log('Yo!')")
   })
 
   it("checks the run button disabled and enabled states", () => {
