@@ -59,4 +59,14 @@ describe('Cypress Test Playground', options, () => {
     cy.contains('button', 'Login').should('be.visible')
     cy.get('#sandwich-menu').should('not.be.visible')
   })
+
+  it('clears the code input when logging off then logging in again', () => {
+    cy.get('textarea').type("cy.log('Yo!')")
+
+    cy.get('#sandwich-menu').click()
+    cy.contains('button', 'Logout').click()
+    cy.contains('button', 'Login').click()
+
+    cy.get('textarea').should('have.value', '')
+  })
 })
