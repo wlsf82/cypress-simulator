@@ -19,7 +19,7 @@ describe('Cypress Test Playground', options, () => {
     })
   })
 
-  it("checks the run button is disabled and enabled states", () => {
+  it("checks the run button disabled and enabled states", () => {
     cy.contains('button', 'Run').should('be.disabled')
 
     cy.get('textarea').type("cy.log('Yo!')")
