@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   logoutButton.addEventListener('click', () => {
-    document.getElementById('codeInput').value = '';
+    codeInput.value = '';
     loginForm.style.display = 'flex';
     mainContent.style.display = 'none';
     sandwichMenu.style.display = 'none';
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   runButton.addEventListener('click', runCode);
 
   function runCode() {
-    const code = document.getElementById('codeInput').value;
+    const code = codeInput.value;
     const outputArea = document.getElementById('outputArea');
 
     outputArea.textContent = "Running... Please wait.";
