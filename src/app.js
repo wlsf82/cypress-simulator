@@ -1,3 +1,10 @@
+const codeInput = document.getElementById('codeInput');
+const runButton = document.getElementById('runButton');
+
+codeInput.addEventListener('input', () => {
+  runButton.disabled = !codeInput.value.trim();
+});
+
 function runCode() {
   const code = document.getElementById('codeInput').value;
   const outputArea = document.getElementById('outputArea');

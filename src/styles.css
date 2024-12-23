@@ -90,11 +90,16 @@ button {
     border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
 }
 
-button:hover {
+button:enabled {
+    opacity: 1;
+    cursor: pointer;
+}
+
+button:hover:enabled {
     background-color: #2e59a5;
 }
 
