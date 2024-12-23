@@ -155,6 +155,26 @@ button:hover:enabled {
   background-color: #2e59a5;
 }
 
+button.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+button .spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid #4e73df;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 pre {
   background-color: #2e3b56;
   color: white;

@@ -44,6 +44,19 @@ describe('Cypress Test Playground', options, () => {
     cy.contains('button', 'Run').should('be.disabled')
   })
 
+  it("checks the run button running state", () => {
+    cy.get('textarea').type("cy.log('Yo!')")
+
+    cy.contains('button', 'Run').click()
+
+    cy.contains('button', 'Running...').should('be.visible')
+
+    cy.tick(2000)
+
+    cy.contains('button', 'Running...').should('not.exist')
+    cy.contains('button', 'Run').should('be.visible')
+  })
+
   it('shows and hides the logout button', () => {
     cy.get('#sandwich-menu').click()
     cy.contains('button', 'Logout').should('be.visible')

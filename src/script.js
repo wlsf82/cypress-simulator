@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const code = codeInput.value;
     const outputArea = document.getElementById('outputArea');
 
+    runButton.disabled = true;
+    runButton.classList.add('loading');
+    runButton.innerHTML = '<div class="spinner"></div> Running...';
+
     outputArea.textContent = "Running... Please wait.";
 
     setTimeout(() => {
@@ -52,11 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
         outputArea.innerHTML = `Visit the below URL, then access the Commands link on the left menu item to get a list of all available Cypress commands:\n\n<a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">https://docs.cypress.io/api/table-of-contents</a>`;
       } else {
         const message = Math.random() < 0.01
-        ? "There's a glitch in the Matrix."
-        : `Code executed successfully:\n\n${code}`;
+          ? "There's a glitch in the Matrix."
+          : `Code executed successfully:\n\n${code}`;
 
         outputArea.textContent = message;
       }
+
+      runButton.disabled = false;
+      runButton.classList.remove('loading');
+      runButton.innerHTML = 'Run';
     }, 2000);
   }
 });
