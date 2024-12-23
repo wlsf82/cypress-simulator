@@ -7,7 +7,7 @@ describe('Cypress Test Playground', options, () => {
     cy.contains('button', 'Login').click()
   })
 
-  it('successfully runs 99% of the times', () => {
+  it('successfully runs the code', () => {
     cy.get('textarea').type("cy.log('Yo!')")
     cy.contains('button', 'Run').click()
     cy.tick(2000)
