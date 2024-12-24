@@ -236,6 +236,24 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 outputArea.classList.add('error');
               }
               break;
+            case 'cy.reload':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Reloaded the page`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.readFile':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Read the ${code.split('(')[1].replace(')', '')} file and yielded its contents`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
             default:
               message = `Warning:\n\nThe command \`${command}\` has not been implemented yet.`;
               outputArea.classList.add('warning');
