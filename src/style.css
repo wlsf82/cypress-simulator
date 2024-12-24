@@ -170,9 +170,16 @@ button .spinner {
   animation: spin 1s linear infinite;
 }
 
-.error-message {
-  color: #ff5470;
-  font-weight: bold;
+.success {
+  color: #abd1c6;
+}
+
+.error {
+  color: #f25f4c;
+}
+
+.warning {
+  color: #ffd803;
 }
 
 @keyframes spin {

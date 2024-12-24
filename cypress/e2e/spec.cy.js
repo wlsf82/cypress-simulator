@@ -13,8 +13,8 @@ describe('Cypress Test Playground', options, () => {
     cy.tick(2000)
 
     cy.get('#outputArea')
-      .should('contain', 'Code executed successfully:')
-      .and('contain', "cy.log('Yo!')")
+      .should('contain', 'Success:')
+      .and('contain', "cy.log('Yo!') // Logged message 'Yo!'")
   })
 
   it('answers for help', () => {

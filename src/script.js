@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   lucide.createIcons();
 
+  const cypressCommands = {
+    'cy.visit': 'Visit a URL',
+    'cy.get': 'Get DOM elements by selector',
+    'cy.contains': 'Find elements by text and optionally click',
+    'cy.request': 'Make an HTTP request',
+    'cy.exec': 'Execute a system command',
+    'cy.log': 'Print a message to the Cypress Command Log'
+  };
+
   loginButton.addEventListener('click', event => {
     event.preventDefault();
     loginForm.style.display = 'none';
@@ -49,10 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
     runButton.classList.add('loading');
     runButton.innerHTML = '<div class="spinner"></div> Running...';
 
-    outputArea.textContent = "Running... Please wait.";
-    outputArea.classList.remove('error-message');
+    outputArea.textContent = "Running... Please wait.";outputArea.classList.remove('warning-message');
+    outputArea.classList.remove('success');
+    outputArea.classList.remove('error');
+    outputArea.classList.remove('warning');
 
     setTimeout(() => {
+
       if (code === 'help') {
         const helpMessage = `Common Cypress Commands and Examples:
 
@@ -91,7 +103,6 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else if (Math.random() < 0.01) {
         message = "There's a glitch in the Matrix.";
-        isError = true;
         outputArea.classList.add('error-message');
 
         outputArea.textContent = message;
@@ -99,6 +110,56 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else {
         message = `Code executed successfully:\n\n${code}`;
+
+        const command = code.split('(')[0];
+
+        if (cypressCommands.hasOwnProperty(command)) {
+          switch (command) {
+            case 'cy.visit':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Visited URL ${code.split('(')[1].replace(')', '')}`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.get':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Got element by selector ${code.split('(')[1].replace(')', '')}`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.exec':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Executed system command ${code.split('(')[1].replace(')', '')}`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.log':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Logged message ${code.split('(')[1].replace(')', '')}`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            default:
+              message = `Warning:\n\nThe command \`${command}\` has not been implemented yet.`;
+              outputArea.classList.add('warning');
+              break;
+          }
+        } else {
+          message = `Error:\n\nInvalid Cypress command: ${code}`;
+          outputArea.classList.add('error');
+        }
 
         outputArea.textContent = message;
       }
