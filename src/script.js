@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     runButton.classList.add('loading');
     runButton.innerHTML = '<div class="spinner"></div> Running...';
 
-    outputArea.textContent = "Running... Please wait.";outputArea.classList.remove('warning-message');
+    outputArea.textContent = "Running... Please wait.";
     outputArea.classList.remove('success');
     outputArea.classList.remove('error');
     outputArea.classList.remove('warning');
@@ -103,7 +103,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else if (Math.random() < 0.01) {
         message = "There's a glitch in the Matrix.";
-        outputArea.classList.add('error-message');
+        outputArea.classList.add('error');
 
         outputArea.textContent = message;
 
