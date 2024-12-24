@@ -191,6 +191,51 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 outputArea.classList.add('error');
               }
               break;
+            case 'cy.pause':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Paused Cypress execution`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.title':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Got the document.title property of the active page`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.focused':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Got the DOM element that is currently focused`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.fixture':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Loaded a fixed set of data located in the ${code.split('(')[1].replace(')', '')} file`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'cy.task':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Executed Node code via the ${code.split('(')[1].replace(')', '')} task`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
             default:
               message = `Warning:\n\nThe command \`${command}\` has not been implemented yet.`;
               outputArea.classList.add('warning');
