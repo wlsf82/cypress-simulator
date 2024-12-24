@@ -232,6 +232,24 @@ footer {
 footer p {
   font-size: 1.2rem;
   font-weight: 500;
+  padding-bottom: 25px;
+}
+
+footer ul {
+  all: unset;
+}
+
+footer ul li {
+  all: unset;
+}
+
+footer a {
+  color: white;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: none
 }
 
 #login {
