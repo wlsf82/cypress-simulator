@@ -50,14 +50,55 @@ document.addEventListener('DOMContentLoaded', () => {
     runButton.innerHTML = '<div class="spinner"></div> Running...';
 
     outputArea.textContent = "Running... Please wait.";
+    outputArea.classList.remove('error-message');
 
     setTimeout(() => {
       if (code === 'help') {
-        outputArea.innerHTML = `Visit the below URL, then access the Commands link on the left menu item to get a list of all available Cypress commands:\n\n<a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">https://docs.cypress.io/api/table-of-contents</a>`;
+        const helpMessage = `Common Cypress Commands and Examples:
+
+1. cy.visit(url)
+Description: Navigate to a specific URL.
+Example: cy.visit('https://example.com')
+
+2. cy.get(selector)
+Description: Get a DOM element based on a selector.
+Example: cy.get('.button-class')
+
+3. cy.contains(text)
+Description: Find an element by its text and optionally perform actions.
+Example: cy.contains('Submit').click()
+
+4. cy.contains(selector, text)
+Description: Find an element by the combinatoin of its selector and text, and optionally perform actions.
+Example: cy.contains('a', 'Subscribe to our newsletter').click()
+
+5. cy.request(method, url)
+Description: Make an HTTP request (GET, POST, etc.)
+Example: cy.request('GET', 'https://api.example.com/users')
+
+6. cy.exec(command)
+Description: Execute a system command (on the host machine).
+Example: cy.exec('ls')
+
+7. cy.log(message)
+Description: Log a message to the Cypress command log.
+Example: cy.log('Test completed successfully')
+
+For more details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`;
+
+        outputArea.innerHTML = helpMessage;
+
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      } else if (Math.random() < 0.01) {
+        message = "There's a glitch in the Matrix.";
+        isError = true;
+        outputArea.classList.add('error-message');
+
+        outputArea.textContent = message;
+
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else {
-        const message = Math.random() < 0.01
-          ? "There's a glitch in the Matrix."
-          : `Code executed successfully:\n\n${code}`;
+        message = `Code executed successfully:\n\n${code}`;
 
         outputArea.textContent = message;
       }

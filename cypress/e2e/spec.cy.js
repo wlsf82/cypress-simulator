@@ -23,12 +23,10 @@ describe('Cypress Test Playground', options, () => {
     cy.tick(2000)
 
     cy.get('#outputArea')
-      .should(
-        'contain',
-        'Visit the below URL, then access the Commands link on the left menu item to get a list of all available Cypress commands:'
-      )
-    cy.contains('#outputArea a', 'https://docs.cypress.io/api/table-of-contents')
-      .should('have.attr', 'target', '_blank')
+      .should('contain','For more details, visit the official Cypress API documentation.')
+    cy.contains('#outputArea a', 'official Cypress API documentation')
+      .should('have.attr', 'href', 'https://docs.cypress.io/api/table-of-contents')
+      .and('have.attr', 'target', '_blank')
       .and('have.attr', 'rel', 'noopener noreferrer')
   })
 

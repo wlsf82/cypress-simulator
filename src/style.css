@@ -170,6 +170,11 @@ button .spinner {
   animation: spin 1s linear infinite;
 }
 
+.error-message {
+  color: #ff5470;
+  font-weight: bold;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
