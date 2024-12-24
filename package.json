@@ -2,7 +2,7 @@
   "name": "cypress-simulator",
   "version": "1.0.0",
   "description": "Explore and experiment with Cypress commands in real-time!",
-  "main": "index.js",
+  "main": "src/index.html",
   "scripts": {
     "cy:open": "cypress open",
     "test": "cypress run --record=false"
