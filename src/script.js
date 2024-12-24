@@ -161,6 +161,8 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
           outputArea.classList.add('error');
         }
 
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
         outputArea.textContent = message;
       }
 
