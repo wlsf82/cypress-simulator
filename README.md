@@ -1,5 +1,5 @@
-# cypress-test-playground
+# cypress-simulator
 
-[![CI/CD](https://github.com/wlsf82/cypress-test-playground/actions/workflows/cicd.yml/badge.svg)](https://github.com/wlsf82/cypress-test-playground/actions)
+[![CI/CD](https://github.com/wlsf82/cypress-simulator/actions/workflows/cicd.yml/badge.svg)](https://github.com/wlsf82/cypress-simulator/actions)
 
 Explore and experiment with Cypress commands in real-time!

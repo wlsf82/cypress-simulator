@@ -1,6 +1,6 @@
 const options = { viewportWidth: 1700, viewportHeight: 1024 }
 
-describe('Cypress Test Playground', options, () => {
+describe('Cypress Simulator', options, () => {
   beforeEach(() => {
     cy.clock()
     cy.visit('./src/index.html')
