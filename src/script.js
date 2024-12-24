@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
 
       if (code === 'help') {
-        const helpMessage = `Common Cypress Commands and Examples:
+        const helpMessage = `Common Cypress commands and examples:
 
 1. cy.visit(url)
 Description: Navigate to a specific URL.
