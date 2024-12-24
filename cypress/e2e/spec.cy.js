@@ -17,6 +17,36 @@ describe('Cypress Test Playground', options, () => {
       .and('contain', "cy.log('Yo!') // Logged message 'Yo!'")
   })
 
+  it('shows warning for not implemented Cypress code', () => {
+    cy.get('textarea').type("cy.contains('Hello, World!')")
+    cy.contains('button', 'Run').click()
+    cy.tick(2000)
+
+    cy.get('#outputArea')
+      .should('contain', 'Warning:')
+      .and('contain', 'The command `cy.contains` has not been implemented yet.')
+  })
+
+  it('shows error for invalid Cypress code', () => {
+    cy.get('textarea').type("console.log('Hello, World!')")
+    cy.contains('button', 'Run').click()
+    cy.tick(2000)
+
+    cy.get('#outputArea')
+      .should('contain', 'Error:')
+      .and('contain', "Invalid Cypress command: console.log('Hello, World!')")
+  })
+
+  it('shows error for valid Cypress code without parenthesis', () => {
+    cy.get('textarea').type("cy.get")
+    cy.contains('button', 'Run').click()
+    cy.tick(2000)
+
+    cy.get('#outputArea')
+      .should('contain', 'Error:')
+      .and('contain', 'Missing parentheses on cy.get command')
+  })
+
   it('answers for help', () => {
     cy.get('textarea').type("help")
     cy.contains('button', 'Run').click()
