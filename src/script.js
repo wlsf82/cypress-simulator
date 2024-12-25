@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 1. cy.visit(url)
 Description: Navigate to a specific URL.
-Example: cy.visit('https://example.com')
+Example: <span>cy.visit('https://example.com')</span>
 
 2. cy.get(selector)
 Description: Get a DOM element based on a selector.
