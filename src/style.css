@@ -16,7 +16,7 @@ body {
 }
 
 header {
-  background-color: #4e73df;
+  background-color: #2750cb;
   color: white;
   text-align: center;
   padding: 30px;
@@ -66,7 +66,7 @@ header {
 }
 
 .dropdown-menu button {
-  background-color: #4e73df;
+  background-color: #2750cb;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -116,7 +116,7 @@ section:hover {
 h2 {
   font-size: 1.6rem;
   margin-bottom: 20px;
-  color: #4e73df;
+  color: #2750cb;
   font-weight: 600;
 }
 
@@ -134,14 +134,14 @@ textarea {
 
 textarea:focus {
   outline: none;
-  border-color: #4e73df;
+  border-color: #2750cb;
 }
 
 button {
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #4e73df;
+  background-color: #2750cb;
   color: white;
   border: none;
   border-radius: 8px;
@@ -170,7 +170,7 @@ button .spinner {
   width: 20px;
   height: 20px;
   border: 3px solid #fff;
-  border-top: 3px solid #4e73df;
+  border-top: 3px solid #2750cb;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -193,7 +193,7 @@ button .spinner {
 }
 
 pre {
-  background-color: #2e3b56;
+  background-color: #182136;
   color: white;
   padding: 15px;
   border-radius: 8px;
@@ -224,7 +224,7 @@ li {
 }
 
 footer {
-  background-color: #4e73df;
+  background-color: #2750cb;
   color: white;
   text-align: center;
   padding: 25px;
@@ -273,7 +273,7 @@ footer a:hover {
 #login h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #4e73df;
+  color: #2750cb;
   font-weight: 600;
   text-align: center;
 }
@@ -281,7 +281,7 @@ footer a:hover {
 #login button {
   width: 100%;
   padding: 15px;
-  background-color: #4e73df;
+  background-color: #2750cb;
   color: white;
   border: none;
   border-radius: 8px;
@@ -307,7 +307,7 @@ nav#menu {
 }
 
 nav#menu button {
-  background-color: #4e73df;
+  background-color: #2750cb;
   color: white;
   border: none;
   border-radius: 8px;
