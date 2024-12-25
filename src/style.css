@@ -52,7 +52,7 @@ header {
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 55px;
+  top: 75px;
   right: 20px;
   background-color: white;
   border-radius: 8px;
