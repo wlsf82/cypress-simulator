@@ -203,7 +203,12 @@ pre {
   height: 90%;
 }
 
-#outputArea a {
+#outputArea a,
+#outputArea span {
+  color: #bae8e8;
+}
+
+#outputArea a:hover {
   color: white;
 }
 

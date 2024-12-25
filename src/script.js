@@ -114,27 +114,27 @@ Example: cy.visit('https://example.com')
 
 2. cy.get(selector)
 Description: Get a DOM element based on a selector.
-Example: cy.get('.button-class')
+Example: <span>cy.get('.button-class')</span>
 
 3. cy.contains(text)
 Description: Find an element by its text and optionally perform actions.
-Example: cy.contains('Submit').click()
+Example: <span>cy.contains('Submit').click())</span>
 
 4. cy.contains(selector, text)
 Description: Find an element by the combinatoin of its selector and text, and optionally perform actions.
-Example: cy.contains('a', 'Subscribe to our newsletter').click()
+Example: <span>cy.contains('a', 'Subscribe to our newsletter').click())</span>
 
 5. cy.request(method, url)
 Description: Make an HTTP request (GET, POST, etc.)
-Example: cy.request('GET', 'https://api.example.com/users')
+Example: <span>cy.request('GET', 'https://api.example.com/users'))</span>
 
 6. cy.exec(command)
 Description: Execute a system command (on the host machine).
-Example: cy.exec('ls')
+Example: <span>cy.exec('ls'))</span>
 
 7. cy.log(message)
 Description: Log a message to the Cypress command log.
-Example: cy.log('Test completed successfully')
+Example: <span>cy.log('Test completed successfully'))</span>
 
 For more details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`;
 
