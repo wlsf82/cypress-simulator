@@ -3,8 +3,11 @@ const options = { viewportWidth: 1700, viewportHeight: 1024 }
 describe('Cypress Simulator', options, () => {
   beforeEach(() => {
     cy.clock()
+    cy.session('sessionId', () => {
+      cy.visit('./src/index.html')
+      cy.contains('button', 'Login').click()
+    })
     cy.visit('./src/index.html')
-    cy.contains('button', 'Login').click()
   })
 
   it('successfully runs the code', () => {

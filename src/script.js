@@ -13,6 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   lucide.createIcons();
 
+  const checkExistingSession = () => {
+    const sessionData = localStorage.getItem('cypressSimulatorSession');
+    if (sessionData) {
+      const { expiresAt } = JSON.parse(sessionData);
+      if (new Date().getTime() < expiresAt) {
+        loginForm.style.display = 'none';
+        mainContent.style.display = 'flex';
+        sandwichMenu.style.display = 'flex';
+      } else {
+        localStorage.removeItem('cypressSimulatorSession');
+      }
+    }
+  };
+
+  checkExistingSession();
+
   const cypressCommands = {
     'cy.visit': 'Visit a URL',
     'cy.get': 'Get DOM elements by selector',
@@ -64,6 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loginButton.addEventListener('click', event => {
     event.preventDefault();
+
+    const expiresAt = new Date();
+    expiresAt.setMonth(expiresAt.getMonth() + 30);
+
+    localStorage.setItem('cypressSimulatorSession', JSON.stringify({
+      loggedIn: true,
+      expiresAt: expiresAt.getTime()
+    }));
+
     loginForm.style.display = 'none';
     mainContent.style.display = 'flex';
     sandwichMenu.style.display = 'flex';
@@ -80,6 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   logoutButton.addEventListener('click', () => {
+    localStorage.removeItem('cypressSimulatorSession');
+
     codeInput.value = '';
     outputArea.innerHTML = '';
     runButton.disabled = true;
