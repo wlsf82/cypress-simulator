@@ -273,13 +273,32 @@ pre {
   display: none;
 }
 
-#outputArea a,
-#outputArea span {
+#outputArea a {
   color: #bae8e8;
 }
 
 #outputArea a:hover {
   color: white;
+}
+
+.cy {
+  color: #4EC9B0;
+}
+
+.dot {
+  color: #D4D4D4;
+}
+
+.command {
+  color: #DCDCAA;
+}
+
+.parens {
+  color: #D4D4D4;
+}
+
+.string {
+  color: #CE9178;
 }
 
 ul {
