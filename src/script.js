@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownMenu = document.getElementById('dropdown-menu');
   const codeInput = document.getElementById('codeInput');
   const runButton = document.getElementById('runButton');
+  const outputSection = document.querySelector('.output');
   const outputArea = document.getElementById('outputArea');
+  const expandCollapseDiv = document.querySelector('.expand-collapse');
 
   lucide.createIcons();
 
@@ -91,6 +93,24 @@ document.addEventListener('DOMContentLoaded', () => {
     runButton.disabled = !codeInput.value.trim();
   });
 
+  expandCollapseDiv.addEventListener('click', event => {
+    const target = event.target;
+
+    if (target.id === 'expandIcon') {
+      outputSection.classList.add('expanded');
+      mainContent.style.position = 'relative';
+      mainContent.style.overflow = 'hidden';
+      document.getElementById('expandIcon').style.display = 'none';
+      document.getElementById('collapseIcon').style.display = 'block';
+    } else if (target.id === 'collapseIcon') {
+      outputSection.classList.remove('expanded');
+      mainContent.style.position = '';
+      mainContent.style.overflow = '';
+      document.getElementById('expandIcon').style.display = 'block';
+      document.getElementById('collapseIcon').style.display = 'none';
+    }
+  });
+
   runButton.addEventListener('click', runCode);
 
   function runCode() {
@@ -141,15 +161,11 @@ Example: <span>cy.log('Test completed successfully'))</span>
 For more details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`;
 
         outputArea.innerHTML = helpMessage;
-
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else if (Math.random() < 0.01) {
         message = "There's a glitch in the Matrix.";
         outputArea.classList.add('error');
 
         outputArea.textContent = message;
-
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       } else {
         message = `Code executed successfully:\n\n${code}`;
 
@@ -266,8 +282,6 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
           outputArea.classList.add('error');
         }
 
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-
         outputArea.textContent = message;
       }
 
@@ -275,5 +289,5 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
       runButton.classList.remove('loading');
       runButton.innerHTML = 'Run';
     }, 2000);
-  }
+  };
 });
