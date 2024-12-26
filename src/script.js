@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const expiresAt = new Date();
-    expiresAt.setMonth(expiresAt.getMonth() + 30);
+    expiresAt.setDate(expiresAt.getDate() + 30);
 
     localStorage.setItem('cypressSimulatorSession', JSON.stringify({
       loggedIn: true,

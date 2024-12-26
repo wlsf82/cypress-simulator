@@ -9,7 +9,7 @@ The Cypress Simulator is an interactive web application that allows users to exp
 ### Authentication
 
 - Users must log in to access the simulator
-- Login session persists for 30 months unless the user logs out
+- Login session persists for 30 days unless the user logs out
 - Users can log out via the sandwich menu in the header
 - No password is required for this demo application
 
@@ -54,6 +54,6 @@ The tool is designed to be:
 - Easy to use (just log in and start typing commands)
 - Educational (includes examples and help)
 - Accessible (works on any modern web browser)
-- Convenient (remembers you're logged in for future visits)
+- Convenient (remembers you're logged in for 30 days)
 
 No technical knowledge is required to start using the simulator, making it perfect for beginners learning Cypress testing.
