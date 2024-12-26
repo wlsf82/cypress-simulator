@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownMenu = document.getElementById('dropdown-menu');
   const codeInput = document.getElementById('codeInput');
   const runButton = document.getElementById('runButton');
+  const outputArea = document.getElementById('outputArea');
 
   lucide.createIcons();
 
@@ -94,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function runCode() {
     const code = codeInput.value;
-    const outputArea = document.getElementById('outputArea');
 
     runButton.disabled = true;
     runButton.classList.add('loading');
