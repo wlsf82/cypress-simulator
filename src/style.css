@@ -388,7 +388,6 @@ nav#menu button:hover {
 
 @media (max-width: 768px) {
   .content {
-    flex-direction: column;
     align-items: center;
     padding: 20px;
   }
