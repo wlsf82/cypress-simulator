@@ -208,6 +208,16 @@ pre {
   z-index: 100;
   padding: 12px;
   cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.expand-collapse:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.output.expanded .expand-collapse:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .expand-collapse i {
