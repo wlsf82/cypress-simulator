@@ -134,4 +134,18 @@ describe('Cypress Simulator', options, () => {
 
     cy.get('textarea').should('have.value', '')
   })
+
+  it('maximizes and minimizes the code output', () => {
+    cy.get('textarea').type("help")
+    cy.contains('button', 'Run').click()
+    cy.tick(2000)
+
+    cy.get('.expand-collapse').click()
+
+    cy.get('#collapseIcon').should('be.visible')
+
+    cy.get('.expand-collapse').click()
+
+    cy.get('#expandIcon').should('be.visible')
+  })
 })
