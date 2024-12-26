@@ -301,6 +301,30 @@ pre {
   color: #CE9178;
 }
 
+.cy-light {
+  color: #0b6e4f;
+}
+
+.dot-light {
+  color: #666666;
+}
+
+.command-light {
+  color: #7209b7;
+}
+
+.parens-light {
+  color: #666666;
+}
+
+.param-light {
+  color: #d00000;
+}
+
+.string-light {
+  color: #bc4749;
+}
+
 ul {
   list-style-type: none;
   padding: 10px;
