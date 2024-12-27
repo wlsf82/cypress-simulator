@@ -75,7 +75,50 @@ document.addEventListener('DOMContentLoaded', () => {
     'cy.wait': 'Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command',
     'cy.window': 'Get the window object of the page that is currently active',
     'cy.wrap': 'Yield the object passed into .wrap(). If the object is a promise, yield its resolved value',
-    'cy.writeFile': 'Write to a file with the specified contents'
+    'cy.writeFile': 'Write to a file with the specified contents',
+    '.and': 'An alias of .should',
+    '.as': 'Assign an alias for later use',
+    '.blur': 'Blur a focused element',
+    '.check': 'Check checkbox(es) or radio(s)',
+    '.children': 'Get the children of each element within a set of DOM elements',
+    '.clear': 'Clear the value of an input or textarea',
+    '.click': 'Click a DOM element',
+    '.closest': 'Get the first DOM element that matches the selector (whether it be itself or one of its ancestors)',
+    '.dblclick': 'Double-click a DOM element',
+    '.each': 'Iterate through an array like structure (arrays or objects with a length property)',
+    '.end': 'End a chain of commands',
+    '.eq': 'Get A DOM element at a specific index in an array of elements',
+    '.filter': 'Get the DOM elements that match a specific selector',
+    '.find': 'Get the descendent DOM elements of a specific selector',
+    '.first': 'Get the first DOM element within a set of DOM elements',
+    '.focus': 'Focus on a DOM element',
+    '.invoke': 'Invoke a function on the previously yielded subject',
+    '.its': "Get a property's value on the previously yielded subject",
+    '.last': 'Get the last DOM element within a set of DOM elements',
+    '.next': 'Get the immediately following sibling of each DOM element within a set of DOM elements',
+    '.nextAll': 'Get all following siblings of each DOM element in a set of matched DOM elements',
+    '.nextUntil': 'Get all following siblings of each DOM element in a set of matched DOM elements up to, but not including, the element provided',
+    '.not': 'Filter DOM element(s) from a set of DOM elements',
+    '.parent': 'Get the parent DOM element of a set of DOM elements',
+    '.parents': 'Get the parent DOM elements of a set of DOM elements',
+    '.parentsUntil': 'Get all ancestors of each DOM element in a set of matched DOM elements up to, but not including, the element provided',
+    '.prev': 'Get the immediately preceding sibling of each element in a set of the elements',
+    '.prevAll': 'Get all previous siblings of each DOM element in a set of matched DOM elements',
+    '.prevUntil': 'Get all previous siblings of each DOM element in a set of matched DOM elements up to, but not including, the element provided',
+    '.rightClick': 'Right click a DOM element',
+    '.scrollIntoView': 'Scroll an element into view',
+    '.select': 'Select an <option> within a <select>',
+    '.selectFile': 'Selects a file or files in an HTML5 input element or simulates dragging a file or files into the browser',
+    '.shadow': 'Traverse into the shadow DOM of an element',
+    '.should': 'Create an assertion. Assertions are automatically retried until they pass or time out',
+    '.siblings': 'Get sibling DOM elements',
+    '.spread': 'Expand an array into multiple arguments',
+    '.submit': 'Submit a form',
+    '.then': 'Enables you to work with the subject yielded from the previous command',
+    '.trigger': 'Trigger an event on a DOM element',
+    '.type': 'Type into a DOM element',
+    '.uncheck': 'Uncheck checkbox(es)',
+    '.within': 'Scopes all subsequent cy commands to within this element'
   };
 
   loginButton.addEventListener('click', event => {
@@ -293,6 +336,24 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
             case 'cy.readFile':
               if (code.includes('(')) {
                 message = `Success:\n\n${code} // Read the ${code.split('(')[1].replace(')', '')} file and yielded its contents`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case '.type':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Typed the ${code.split('(')[1].replace(')', '')} text`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case '.selectFile':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Uploaded the ${code.split('(')[1].replace(')', '')} file`;
                 outputArea.classList.add('success');
               } else {
                 message = `Error:\n\nMissing parentheses on ${code} command`;
