@@ -139,7 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
     'Cypress.session': 'Cypress.session is a collection of async session-related helper methods intended to be used alongside the cy.session() command',
     'Cypress.spec': 'Cypress.spec returns you the properties of the spec under test',
     'Cypress.testingType': 'Cypress.testingType returns the current testing type, determined by your selection in the Cypress Launchpad. The Cypress.testingType returns e2e for E2E Testing or component for Component Testing',
-    'Cypress.version': 'Cypress.version returns you the current version of Cypress you are running'
+    'Cypress.version': 'Cypress.version returns you the current version of Cypress you are running',
+    'Cypress._': 'Cypress automatically includes lodash and exposes it as Cypress._',
+    'Cypress.$': 'Cypress automatically includes jQuery and exposes it as Cypress.$',
+    'Cypress.Blob': 'Cypress automatically includes a Blob library and exposes it as Cypress.Blob',
+    'Cypress.Buffer': "Cypress automatically includes a Buffer polyfill for the browser and exposes it as Cypress.Buffer",
+    'Cypress.minimatch': 'Cypress automatically includes minimatch and exposes it as Cypress.minimatch',
+    'Cypress.Promise': 'Cypress automatically includes Bluebird and exposes it as Cypress.Promise',
+    'Cypress.sinon': 'Cypress automatically includes Sinon.JS and exposes it as Cypress.sinon'
   };
 
   loginButton.addEventListener('click', event => {
