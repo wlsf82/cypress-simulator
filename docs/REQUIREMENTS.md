@@ -13,7 +13,7 @@ The Cypress Simulator is an interactive web application that allows users to exp
 - Users can log out via the sandwich menu in the header
 - No password is required for this demo application
 
-### User Interface
+### Graphical User Interface (GUI)
 
 1. Header
    - Display application title "Cypress Simulator"
@@ -39,6 +39,12 @@ The Cypress Simulator is an interactive web application that allows users to exp
      - Udemy
      - Blog
      - YouTube
+
+#### GUI Sample Screenshot
+
+Below is an example of how the application looks like in a Desktop viewport.
+
+![cypress-simulator](./cypress-simulator.png)
 
 ## Summary
 
