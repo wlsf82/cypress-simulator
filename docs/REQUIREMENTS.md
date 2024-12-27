@@ -27,14 +27,14 @@ The Cypress Simulator is an interactive web application that allows users to exp
    - Allow output section to be expanded/collapsed
 
 3. Code Execution
-   - Support common Cypress commands (visit, get, contains, request, exec, log, etc.)
+   - Support common Cypress commands (`cy.visit`, `cy.get`, `cy.contains`, `cy.request`, `cy.exec`, `cy.log`, etc.)
    - Provide immediate feedback on command execution
    - Show success/error/warning messages based on command validity
-   - Include a "help" command to display usage examples
+   - Include a `help` command to display usage examples
 
 4. Footer
    - Display "Powered by Talking About Testing" credit
-   - Provide links to:
+   - Provide links to Talking About Testing's:
      - Hotmart
      - Udemy
      - Blog
