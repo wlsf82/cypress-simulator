@@ -118,7 +118,28 @@ document.addEventListener('DOMContentLoaded', () => {
     '.trigger': 'Trigger an event on a DOM element',
     '.type': 'Type into a DOM element',
     '.uncheck': 'Uncheck checkbox(es)',
-    '.within': 'Scopes all subsequent cy commands to within this element'
+    '.within': 'Scopes all subsequent cy commands to within this element',
+    'Cypress.arch': "Cypress.arch returns you the CPU architecture name of the underlying OS, as returned from Node's os.arch()",
+    'Cypress.browser': "Cypress.browser returns you browser's properties",
+    'Cypress.config': 'get and set configuration options in your tests',
+    'Cypress.Cookies.debug': 'Cookies.debug() enables you to generate logs to the console whenever any cookies are modified',
+    'Cypress.currentRetry': 'Cypress.currentRetry is a number representing the current test retry count',
+    'Cypress.currentTest': 'Cypress.currentTest is an object representing the currently executing test instance, with properties to access the title of the test',
+    'Cypress.log': 'This is the internal API for controlling what gets printed to the Command Log',
+    'Cypress.dom': 'Cypress.dom.method() is a collection of DOM related helper methods',
+    'Cypress.ensure': 'Cypress.ensure is a collection of helper methods for making assertions',
+    'Cypress.env': 'get and set environment variables in your tests',
+    'Cypress.isBrowser': 'Cypress.isBrowser checks if the current browser matches the given name or filter',
+    'Cypress.isCy': 'Cypress.isCy() checks if a variable is a valid instance of cy or a cy chainable',
+    'Cypress.Keyboard': 'The Keyboard API allows you set the default values for how the .type() command is executed',
+    'Cypress.platform': "Cypress.platform returns the underlying OS name, as returned from Node's os.platform()",
+    'Cypress.require': 'Cypress.require enables utilizing dependencies within the cy.origin() callback function. It is used to require modules such as npm packages and other local files',
+    'Cypress.Screenshot': 'The Screenshot API allows you set defaults for how screenshots are captured during .screenshot and automatic screenshots taken during test failures',
+    'Cypress.SelectorPlayground': 'The Selector Playground exposes APIs that enable you to: a) Change the default selector strategy; and b) Override the selectors that are returned per element',
+    'Cypress.session': 'Cypress.session is a collection of async session-related helper methods intended to be used alongside the cy.session() command',
+    'Cypress.spec': 'Cypress.spec returns you the properties of the spec under test',
+    'Cypress.testingType': 'Cypress.testingType returns the current testing type, determined by your selection in the Cypress Launchpad. The Cypress.testingType returns e2e for E2E Testing or component for Component Testing',
+    'Cypress.version': 'Cypress.version returns you the current version of Cypress you are running'
   };
 
   loginButton.addEventListener('click', event => {
@@ -354,6 +375,15 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
             case '.selectFile':
               if (code.includes('(')) {
                 message = `Success:\n\n${code} // Uploaded the ${code.split('(')[1].replace(')', '')} file`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on ${code} command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'Cypress.env':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Got the ${code.split('(')[1].replace(')', '')} environment variable`;
                 outputArea.classList.add('success');
               } else {
                 message = `Error:\n\nMissing parentheses on ${code} command`;
