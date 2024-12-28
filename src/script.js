@@ -1,33 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('login');
-  const loginButton = document.querySelector('#login form button');
-  const mainContent = document.querySelector('.content');
-  const logoutButton = document.getElementById('logoutButton');
-  const sandwichMenu = document.getElementById('sandwich-menu');
-  const dropdownMenu = document.getElementById('dropdown-menu');
-  const codeInput = document.getElementById('codeInput');
-  const runButton = document.getElementById('runButton');
-  const outputSection = document.querySelector('.output');
-  const outputArea = document.getElementById('outputArea');
-  const expandCollapseDiv = document.querySelector('.expand-collapse');
+  const loginForm = document.getElementById('login')
+  const loginButton = document.querySelector('#login form button')
+  const mainContent = document.querySelector('.content')
+  const logoutButton = document.getElementById('logoutButton')
+  const sandwichMenu = document.getElementById('sandwich-menu')
+  const dropdownMenu = document.getElementById('dropdown-menu')
+  const codeInput = document.getElementById('codeInput')
+  const runButton = document.getElementById('runButton')
+  const outputSection = document.querySelector('.output')
+  const outputArea = document.getElementById('outputArea')
+  const expandCollapseDiv = document.querySelector('.expand-collapse')
 
-  lucide.createIcons();
+  // eslint-disable-next-line no-undef
+  lucide.createIcons()
 
   const checkExistingSession = () => {
-    const sessionData = localStorage.getItem('cypressSimulatorSession');
+    const sessionData = localStorage.getItem('cypressSimulatorSession')
     if (sessionData) {
-      const { expiresAt } = JSON.parse(sessionData);
+      const { expiresAt } = JSON.parse(sessionData)
       if (new Date().getTime() < expiresAt) {
-        loginForm.style.display = 'none';
-        mainContent.style.display = 'flex';
-        sandwichMenu.style.display = 'flex';
+        loginForm.style.display = 'none'
+        mainContent.style.display = 'flex'
+        sandwichMenu.style.display = 'flex'
       } else {
-        localStorage.removeItem('cypressSimulatorSession');
+        localStorage.removeItem('cypressSimulatorSession')
       }
     }
-  };
+  }
 
-  checkExistingSession();
+  checkExistingSession()
 
   const cypressCommands = {
     'cy.visit': 'Visit a URL',
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '.first': 'Get the first DOM element within a set of DOM elements',
     '.focus': 'Focus on a DOM element',
     '.invoke': 'Invoke a function on the previously yielded subject',
-    '.its': "Get a property's value on the previously yielded subject",
+    '.its': 'Get a property\'s value on the previously yielded subject',
     '.last': 'Get the last DOM element within a set of DOM elements',
     '.next': 'Get the immediately following sibling of each DOM element within a set of DOM elements',
     '.nextAll': 'Get all following siblings of each DOM element in a set of matched DOM elements',
@@ -125,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'Cypress.Commands.overwrite': 'Overwrites a Cypress native Command',
     'Cypress.Commands.addQuery': 'Creates a Cypress custom query',
     'Cypress.Commands.overwriteQuery': 'Overwrites  a Cypress custom query',
-    'Cypress.arch': "Cypress.arch returns you the CPU architecture name of the underlying OS, as returned from Node's os.arch()",
-    'Cypress.browser': "Cypress.browser returns you browser's properties",
+    'Cypress.arch': 'Cypress.arch returns you the CPU architecture name of the underlying OS, as returned from Node\'s os.arch()',
+    'Cypress.browser': 'Cypress.browser returns you browser\'s properties',
     'Cypress.config': 'get and set configuration options in your tests',
     'Cypress.Cookies.debug': 'Cookies.debug() enables you to generate logs to the console whenever any cookies are modified',
     'Cypress.currentRetry': 'Cypress.currentRetry is a number representing the current test retry count',
@@ -138,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Cypress.isBrowser': 'Cypress.isBrowser checks if the current browser matches the given name or filter',
     'Cypress.isCy': 'Cypress.isCy() checks if a variable is a valid instance of cy or a cy chainable',
     'Cypress.Keyboard': 'The Keyboard API allows you set the default values for how the .type() command is executed',
-    'Cypress.platform': "Cypress.platform returns the underlying OS name, as returned from Node's os.platform()",
+    'Cypress.platform': 'Cypress.platform returns the underlying OS name, as returned from Node\'s os.platform()',
     'Cypress.require': 'Cypress.require enables utilizing dependencies within the cy.origin() callback function. It is used to require modules such as npm packages and other local files',
     'Cypress.Screenshot': 'The Screenshot API allows you set defaults for how screenshots are captured during .screenshot and automatic screenshots taken during test failures',
     'Cypress.SelectorPlayground': 'The Selector Playground exposes APIs that enable you to: a) Change the default selector strategy; and b) Override the selectors that are returned per element',
@@ -149,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Cypress._': 'Cypress automatically includes lodash and exposes it as Cypress._',
     'Cypress.$': 'Cypress automatically includes jQuery and exposes it as Cypress.$',
     'Cypress.Blob': 'Cypress automatically includes a Blob library and exposes it as Cypress.Blob',
-    'Cypress.Buffer': "Cypress automatically includes a Buffer polyfill for the browser and exposes it as Cypress.Buffer",
+    'Cypress.Buffer': 'Cypress automatically includes a Buffer polyfill for the browser and exposes it as Cypress.Buffer',
     'Cypress.minimatch': 'Cypress automatically includes minimatch and exposes it as Cypress.minimatch',
     'Cypress.Promise': 'Cypress automatically includes Bluebird and exposes it as Cypress.Promise',
     'Cypress.sinon': 'Cypress automatically includes Sinon.JS and exposes it as Cypress.sinon',
@@ -162,84 +163,85 @@ document.addEventListener('DOMContentLoaded', () => {
     'afterEach': 'Callback function that runs after each test case in a suite or sub-suite',
     '.only': 'A feature that allows you to run only the specified suit, sub-suite, or test case',
     '.skip': 'A feature that allows you to skip only the specified suite, sub-suite, or test case',
-    'expect': "Chai’s expect command provides a readable, natural-language syntax for writing assertions, like expect(value).to.equal(expectedValue), making it easy to validate conditions in tests"
-  };
+    'expect': 'Chai’s expect command provides a readable, natural-language syntax for writing assertions, like expect(value).to.equal(expectedValue), making it easy to validate conditions in tests'
+  }
 
   loginButton.addEventListener('click', event => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + 30);
+    const expiresAt = new Date()
+    expiresAt.setDate(expiresAt.getDate() + 30)
 
     localStorage.setItem('cypressSimulatorSession', JSON.stringify({
       loggedIn: true,
       expiresAt: expiresAt.getTime()
-    }));
+    }))
 
-    loginForm.style.display = 'none';
-    mainContent.style.display = 'flex';
-    sandwichMenu.style.display = 'flex';
-  });
+    loginForm.style.display = 'none'
+    mainContent.style.display = 'flex'
+    sandwichMenu.style.display = 'flex'
+  })
 
   sandwichMenu.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('show');
-  });
+    dropdownMenu.classList.toggle('show')
+  })
 
   document.addEventListener('click', event => {
     if (!sandwichMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
-      dropdownMenu.classList.remove('show');
+      dropdownMenu.classList.remove('show')
     }
-  });
+  })
 
   logoutButton.addEventListener('click', () => {
-    localStorage.removeItem('cypressSimulatorSession');
+    localStorage.removeItem('cypressSimulatorSession')
 
-    codeInput.value = '';
-    outputArea.innerHTML = '';
-    runButton.disabled = true;
-    loginForm.style.display = 'flex';
-    mainContent.style.display = 'none';
-    sandwichMenu.style.display = 'none';
-    dropdownMenu.classList.remove('show');
-  });
+    codeInput.value = ''
+    outputArea.innerHTML = ''
+    runButton.disabled = true
+    loginForm.style.display = 'flex'
+    mainContent.style.display = 'none'
+    sandwichMenu.style.display = 'none'
+    dropdownMenu.classList.remove('show')
+  })
 
   codeInput.addEventListener('input', () => {
-    runButton.disabled = !codeInput.value.trim();
-  });
+    runButton.disabled = !codeInput.value.trim()
+  })
 
   expandCollapseDiv.addEventListener('click', event => {
-    const target = event.target;
+    const target = event.target
 
     if (target.id === 'expandIcon') {
-      outputSection.classList.add('expanded');
-      mainContent.style.position = 'relative';
-      mainContent.style.overflow = 'hidden';
-      document.getElementById('expandIcon').style.display = 'none';
-      document.getElementById('collapseIcon').style.display = 'block';
+      outputSection.classList.add('expanded')
+      mainContent.style.position = 'relative'
+      mainContent.style.overflow = 'hidden'
+      document.getElementById('expandIcon').style.display = 'none'
+      document.getElementById('collapseIcon').style.display = 'block'
     } else if (target.id === 'collapseIcon') {
-      outputSection.classList.remove('expanded');
-      mainContent.style.position = '';
-      mainContent.style.overflow = '';
-      document.getElementById('expandIcon').style.display = 'block';
-      document.getElementById('collapseIcon').style.display = 'none';
+      outputSection.classList.remove('expanded')
+      mainContent.style.position = ''
+      mainContent.style.overflow = ''
+      document.getElementById('expandIcon').style.display = 'block'
+      document.getElementById('collapseIcon').style.display = 'none'
     }
-  });
+  })
 
-  runButton.addEventListener('click', runCode);
+  runButton.addEventListener('click', runCode)
 
   function runCode() {
-    const code = codeInput.value;
+    const code = codeInput.value
 
-    runButton.disabled = true;
-    runButton.classList.add('loading');
-    runButton.innerHTML = '<div class="spinner"></div> Running...';
+    runButton.disabled = true
+    runButton.classList.add('loading')
+    runButton.innerHTML = '<div class="spinner"></div> Running...'
 
-    outputArea.textContent = "Running... Please wait.";
-    outputArea.classList.remove('success');
-    outputArea.classList.remove('error');
-    outputArea.classList.remove('warning');
+    outputArea.textContent = 'Running... Please wait.'
+    outputArea.classList.remove('success')
+    outputArea.classList.remove('error')
+    outputArea.classList.remove('warning')
 
     setTimeout(() => {
+      let message
 
       if (code === 'help') {
         const helpMessage = `Common Cypress commands and examples:
@@ -272,190 +274,191 @@ Example: <span class="cy">cy</span><span class="dot">.</span><span class="comman
 Description: Log a message to the Cypress command log.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">log</span><span class="parens">(</span><span class="string">'Test completed successfully'</span><span class="parens">)</span>
 
-For more details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`;
+For more details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`
 
-        outputArea.innerHTML = helpMessage;
+        outputArea.innerHTML = helpMessage
       } else if (Math.random() < 0.01) {
-        message = "There's a glitch in the Matrix.";
-        outputArea.classList.add('error');
+        message = 'There\'s a glitch in the Matrix.'
+        outputArea.classList.add('error')
 
-        outputArea.textContent = message;
+        outputArea.textContent = message
       } else {
-        message = `Code executed successfully:\n\n${code}`;
+        message = `Code executed successfully:\n\n${code}`
 
-        const command = code.split('(')[0];
+        const command = code.split('(')[0]
 
+        // eslint-disable-next-line no-prototype-builtins
         if (cypressCommands.hasOwnProperty(command)) {
           switch (command) {
-            case 'cy.visit':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Visited URL ${code.split('(')[1].replace(')', '')}`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.get':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Got element by selector ${code.split('(')[1].replace(')', '')}`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.exec':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Executed system command ${code.split('(')[1].replace(')', '')}`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.log':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Logged message ${code.split('(')[1].replace(')', '')}`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.pause':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Paused Cypress execution`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.title':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Got the document.title property of the active page`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.focused':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Got the DOM element that is currently focused`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.fixture':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Loaded a fixed set of data located in the ${code.split('(')[1].replace(')', '')} file`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.task':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Executed Node code via the ${code.split('(')[1].replace(')', '')} task`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.reload':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Reloaded the page`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'cy.readFile':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Read the ${code.split('(')[1].replace(')', '')} file and yielded its contents`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case '.type':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Typed the ${code.split('(')[1].replace(')', '')} text`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case '.selectFile':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Uploaded the ${code.split('(')[1].replace(')', '')} file`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'Cypress.env':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Got the ${code.split('(')[1].replace(')', '')} environment variable`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'describe':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test suite`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'context':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test sub-suite`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            case 'it':
-              if (code.includes('(')) {
-                message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test case`;
-                outputArea.classList.add('success');
-              } else {
-                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
-                outputArea.classList.add('error');
-              }
-              break;
-            default:
-              message = `Warning:\n\nThe \`${command}\` command has not been implemented yet.`;
-              outputArea.classList.add('warning');
-              break;
+          case 'cy.visit':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Visited URL ${code.split('(')[1].replace(')', '')}`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.get':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Got element by selector ${code.split('(')[1].replace(')', '')}`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.exec':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Executed system command ${code.split('(')[1].replace(')', '')}`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.log':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Logged message ${code.split('(')[1].replace(')', '')}`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.pause':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Paused Cypress execution`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.title':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Got the document.title property of the active page`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.focused':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Got the DOM element that is currently focused`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.fixture':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Loaded a fixed set of data located in the ${code.split('(')[1].replace(')', '')} file`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.task':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Executed Node code via the ${code.split('(')[1].replace(')', '')} task`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.reload':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Reloaded the page`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'cy.readFile':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Read the ${code.split('(')[1].replace(')', '')} file and yielded its contents`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case '.type':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Typed the ${code.split('(')[1].replace(')', '')} text`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case '.selectFile':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Uploaded the ${code.split('(')[1].replace(')', '')} file`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'Cypress.env':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Got the ${code.split('(')[1].replace(')', '')} environment variable`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'describe':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test suite`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'context':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test sub-suite`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          case 'it':
+            if (code.includes('(')) {
+              message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test case`
+              outputArea.classList.add('success')
+            } else {
+              message = `Error:\n\nMissing parentheses on \`${code}\` command`
+              outputArea.classList.add('error')
+            }
+            break
+          default:
+            message = `Warning:\n\nThe \`${command}\` command has not been implemented yet.`
+            outputArea.classList.add('warning')
+            break
           }
         } else {
-          message = `Error:\n\nInvalid Cypress command: ${code}`;
-          outputArea.classList.add('error');
+          message = `Error:\n\nInvalid Cypress command: ${code}`
+          outputArea.classList.add('error')
         }
 
-        outputArea.textContent = message;
+        outputArea.textContent = message
       }
 
-      runButton.disabled = false;
-      runButton.classList.remove('loading');
-      runButton.innerHTML = 'Run';
-    }, 2000);
-  };
-});
+      runButton.disabled = false
+      runButton.classList.remove('loading')
+      runButton.innerHTML = 'Run'
+    }, 2000)
+  }
+})

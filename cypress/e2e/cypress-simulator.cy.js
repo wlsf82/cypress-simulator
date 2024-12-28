@@ -11,17 +11,17 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('successfully runs the code', () => {
-    cy.get('textarea').type("cy.log('Yo!')")
+    cy.get('textarea').type('cy.log(\'Yo!\')')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
     cy.get('#outputArea')
       .should('contain', 'Success:')
-      .and('contain', "cy.log('Yo!') // Logged message 'Yo!'")
+      .and('contain', 'cy.log(\'Yo!\') // Logged message \'Yo!\'')
   })
 
   it('shows warning for not implemented Cypress code', () => {
-    cy.get('textarea').type("cy.contains('Hello, World!')")
+    cy.get('textarea').type('cy.contains(\'Hello, World!\')')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
@@ -31,17 +31,17 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('shows error for invalid Cypress code', () => {
-    cy.get('textarea').type("console.log('Hello, World!')")
+    cy.get('textarea').type('console.log(\'Hello, World!\')')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
     cy.get('#outputArea')
       .should('contain', 'Error:')
-      .and('contain', "Invalid Cypress command: console.log('Hello, World!')")
+      .and('contain', 'Invalid Cypress command: console.log(\'Hello, World!\')')
   })
 
   it('shows error for valid Cypress code without parentheses', () => {
-    cy.get('textarea').type("cy.get")
+    cy.get('textarea').type('cy.get')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
@@ -51,7 +51,7 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('answers for help', () => {
-    cy.get('textarea').type("help")
+    cy.get('textarea').type('help')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
@@ -63,10 +63,10 @@ describe('Cypress Simulator', options, () => {
       .and('have.attr', 'rel', 'noopener noreferrer')
   })
 
-  it("checks the run button disabled and enabled states", () => {
+  it('checks the run button disabled and enabled states', () => {
     cy.contains('button', 'Run').should('be.disabled')
 
-    cy.get('textarea').type("cy.log('Yo!')")
+    cy.get('textarea').type('cy.log(\'Yo!\')')
 
     cy.contains('button', 'Run').should('be.enabled')
 
@@ -75,8 +75,8 @@ describe('Cypress Simulator', options, () => {
     cy.contains('button', 'Run').should('be.disabled')
   })
 
-  it("checks the run button running state", () => {
-    cy.get('textarea').type("cy.log('Yo!')")
+  it('checks the run button running state', () => {
+    cy.get('textarea').type('cy.log(\'Yo!\')')
 
     cy.contains('button', 'Run').click()
 
@@ -105,7 +105,7 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('clears the code input when logging off then logging in again', () => {
-    cy.get('textarea').type("cy.log('Yo!')")
+    cy.get('textarea').type('cy.log(\'Yo!\')')
 
     cy.get('#sandwich-menu').click()
     cy.contains('button', 'Logout').click()
@@ -115,7 +115,7 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('disabled the run button when logging off then logging in again', () => {
-    cy.get('textarea').type("cy.log('Yo!')")
+    cy.get('textarea').type('cy.log(\'Yo!\')')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
@@ -127,7 +127,7 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('clears the code output when logging off then logging in again', () => {
-    cy.get('textarea').type("cy.log('Yo!')")
+    cy.get('textarea').type('cy.log(\'Yo!\')')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
@@ -139,7 +139,7 @@ describe('Cypress Simulator', options, () => {
   })
 
   it('maximizes and minimizes the code output', () => {
-    cy.get('textarea').type("help")
+    cy.get('textarea').type('help')
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 

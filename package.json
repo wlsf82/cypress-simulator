@@ -4,6 +4,8 @@
   "description": "Explore and experiment with Cypress commands in real-time!",
   "main": "src/index.html",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "cy:open": "cypress open",
     "test": "cypress run --record=false"
   },
@@ -11,6 +13,8 @@
   "author": "Walmyr <wlsf82@gmail.com> (https://walmyr.dev/)",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^13.17.0"
+    "cypress": "^13.17.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-cypress": "^2.15.2"
   }
 }
