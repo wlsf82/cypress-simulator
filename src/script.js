@@ -246,31 +246,31 @@ document.addEventListener('DOMContentLoaded', () => {
       if (code === 'help') {
         const helpMessage = `Common Cypress commands and examples:
 
-1. cy.visit(url)
+1. cy.visit(url: string)
 Description: Navigate to a specific URL.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">visit</span><span class="parens">(</span><span class="string">'https://example.com'</span><span class="parens">)</span>
 
-2. cy.get(selector)
+2. cy.get(selector: string)
 Description: Get a DOM element based on a selector.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">get</span><span class="parens">(</span><span class="string">'.button-class'</span><span class="parens">)</span>
 
-3. cy.contains(text)
+3. cy.contains(text: string)
 Description: Find an element by its text and optionally perform actions.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">contains</span><span class="parens">(</span><span class="string">'Submit'</span><span class="parens">)</span><span class="dot">.</span><span class="command">click</span><span class="parens">()</span>
 
-4. cy.contains(selector, text)
+4. cy.contains(selector: string, text: string)
 Description: Find an element by the combinatoin of its selector and text, and optionally perform actions.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">contains</span><span class="parens">(</span><span class="string">'a'</span><span class="parens">, </span><span class="string">'Subscribe to our newsletter'</span><span class="parens">)</span><span class="dot">.</span><span class="command">click</span><span class="parens">()</span>
 
-5. cy.request(method, url)
+5. cy.request(method: string, url: string)
 Description: Make an HTTP request (GET, POST, etc.)
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">request</span><span class="parens">(</span><span class="string">'GET'</span><span class="parens">, </span><span class="string">'https://api.example.com/users'</span><span class="parens">)</span>
 
-6. cy.exec(command)
+6. cy.exec(command: string)
 Description: Execute a system command (on the host machine).
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">exec</span><span class="parens">(</span><span class="string">'ls'</span><span class="parens">)</span>
 
-7. cy.log(message)
+7. cy.log(message: string)
 Description: Log a message to the Cypress command log.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">log</span><span class="parens">(</span><span class="string">'Test completed successfully'</span><span class="parens">)</span>
 
