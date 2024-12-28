@@ -27,7 +27,7 @@ describe('Cypress Simulator', options, () => {
 
     cy.get('#outputArea')
       .should('contain', 'Warning:')
-      .and('contain', 'The command `cy.contains` has not been implemented yet.')
+      .and('contain', 'The `cy.contains` command has not been implemented yet.')
   })
 
   it('shows error for invalid Cypress code', () => {

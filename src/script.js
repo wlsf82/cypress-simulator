@@ -441,7 +441,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
               }
               break;
             default:
-              message = `Warning:\n\nThe command \`${command}\` has not been implemented yet.`;
+              message = `Warning:\n\nThe \`${command}\` command has not been implemented yet.`;
               outputArea.classList.add('warning');
               break;
           }
