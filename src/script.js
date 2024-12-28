@@ -161,7 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'after': 'Callback function that runs after the test suite',
     'afterEach': 'Callback function that runs after each test case in a suite or sub-suite',
     '.only': 'A feature that allows you to run only the specified suit, sub-suite, or test case',
-    '.skip': 'A feature that allows you to skip only the specified suite, sub-suite, or test case'
+    '.skip': 'A feature that allows you to skip only the specified suite, sub-suite, or test case',
+    'expect': "Chai’s expect command provides a readable, natural-language syntax for writing assertions, like expect(value).to.equal(expectedValue), making it easy to validate conditions in tests"
   };
 
   loginButton.addEventListener('click', event => {
