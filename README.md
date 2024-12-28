@@ -4,11 +4,11 @@
 
 Explore and experiment with Cypress commands in real-time!
 
-## Business rules
+## Business rules 🕴️
 
 Read the following [doc](./docs/REQUIREMENTS.md) to understand all the Cypress Simulator application's functionalities.
 
-## Pre-requirements
+## Pre-requirements 📋
 
 To clone and run this project, you will need:
 
@@ -18,7 +18,7 @@ To clone and run this project, you will need:
 
 **Note:** When installing Node.js, npm is automatically installed too.
 
-## Starting the app
+## Starting the app 💻
 
 To start the app, simply open the `./src/index.html` file in your preferred web browser.
 
@@ -26,7 +26,7 @@ To start the app, simply open the `./src/index.html` file in your preferred web 
 
 After cloning this project, to install the dev dependencies, open a terminal, go to the root of this repo, and run `npm install` (or `npm i`, for short.)
 
-## Static Analisys
+## Static Analisys 🔎
 
 This project is configured with [ESLint](https://eslint.org/) rules.
 
@@ -34,7 +34,7 @@ To run ESLint, simply run `npm run lint`.
 
 To auto-fix breaking linting rules, run `npm run lint:fix`.
 
-## Tests
+## Tests 🧪
 
 This project has end-to-end tests written with [Cypress](https://cypress.io/).
 
