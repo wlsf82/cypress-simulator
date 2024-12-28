@@ -4,19 +4,28 @@ on:
     branches:
     - main
 jobs:
-  cypress-tests:
+  static-analysis:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install npm modules
+      run: npm install
+    - name: Run ESLint
+      run: npm run lint
+  tests:
+    needs: static-analysis
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run Cypress tests locally 🧪
+      - name: Run Cypress tests 🧪
         uses: cypress-io/github-action@v6
         with:
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
   deploy:
-    needs: cypress-tests
+    needs: tests
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout
