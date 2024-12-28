@@ -57,7 +57,7 @@ describe('Cypress Simulator', options, () => {
 
     cy.get('#outputArea')
       .should('contain', 'Common Cypress commands and examples:')
-      .and('contain','For more details, visit the official Cypress API documentation.')
+      .and('contain','For more commands and details, visit the official Cypress API documentation.')
     cy.contains('#outputArea a', 'official Cypress API documentation')
       .should('have.attr', 'href', 'https://docs.cypress.io/api/table-of-contents')
       .and('have.attr', 'target', '_blank')

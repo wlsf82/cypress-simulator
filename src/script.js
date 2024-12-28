@@ -274,7 +274,7 @@ Example: <span class="cy">cy</span><span class="dot">.</span><span class="comman
 Description: Log a message to the Cypress command log.
 Example: <span class="cy">cy</span><span class="dot">.</span><span class="command">log</span><span class="parens">(</span><span class="string">'Test completed successfully'</span><span class="parens">)</span>
 
-For more details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`
+For more commands and details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`
 
         outputArea.innerHTML = helpMessage
       } else if (Math.random() < 0.01) {
