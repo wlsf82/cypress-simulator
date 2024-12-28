@@ -24,27 +24,29 @@ To start the app, simply open the `./src/index.html` file in your preferred web 
 
 ## Installation of `devDependencies`
 
-After cloning this project, to install the dev dependencies, open a terminal, go to the root of this repo, and run `npm install` (or `npm i`, for short.)
+The `devDependencies` need to be installed to run the static analysis and tests.
 
-### Static Analisys 🔎
+To do so, after cloning the project, open a terminal, go to the repo's root, and run `npm install` (or `npm i`, for short.)
+
+### Static analysis 🔎
 
 This project is configured with [ESLint](https://eslint.org/) rules.
 
-To run ESLint, simply run `npm run lint`.
+To run ESLint, simply run the `npm run lint` command.
 
-To auto-fix breaking linting rules, run `npm run lint:fix`.
+To auto-fix breaking linting rules, run the `npm run lint:fix` command.
 
 ### Tests 🧪
 
 This project has end-to-end tests written with [Cypress](https://cypress.io/).
 
-To run them , simply run `npm test` (or `npm t`, for short.)
+To run them , simply run the `npm test` command (or `npm t`, for short.)
 
-To run tests in interactive mode, run `npm run cy:open`.
+To run tests in interactive mode, run the `npm run cy:open` command.
 
 ## Support this project
 
-To support this project, simply leave it a star on GitHub. ⭐
+To support this project, leave it a star on GitHub. ⭐
 
 ___
 
