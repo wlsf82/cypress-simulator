@@ -40,14 +40,14 @@ describe('Cypress Simulator', options, () => {
       .and('contain', "Invalid Cypress command: console.log('Hello, World!')")
   })
 
-  it('shows error for valid Cypress code without parenthesis', () => {
+  it('shows error for valid Cypress code without parentheses', () => {
     cy.get('textarea').type("cy.get")
     cy.contains('button', 'Run').click()
     cy.tick(2000)
 
     cy.get('#outputArea')
       .should('contain', 'Error:')
-      .and('contain', 'Missing parentheses on cy.get command')
+      .and('contain', 'Missing parentheses on `cy.get` command')
   })
 
   it('answers for help', () => {
