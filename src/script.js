@@ -152,7 +152,16 @@ document.addEventListener('DOMContentLoaded', () => {
     'Cypress.Buffer': "Cypress automatically includes a Buffer polyfill for the browser and exposes it as Cypress.Buffer",
     'Cypress.minimatch': 'Cypress automatically includes minimatch and exposes it as Cypress.minimatch',
     'Cypress.Promise': 'Cypress automatically includes Bluebird and exposes it as Cypress.Promise',
-    'Cypress.sinon': 'Cypress automatically includes Sinon.JS and exposes it as Cypress.sinon'
+    'Cypress.sinon': 'Cypress automatically includes Sinon.JS and exposes it as Cypress.sinon',
+    'describe': 'Describes and wraps a test suite implementation',
+    'context': 'Describes and wraps a test sub-suite implementation',
+    'it': 'Describes and wraps a test case implementation',
+    'before': 'Callback function that runs before the test suite',
+    'beforeEach': 'Callback function that runs before each test case in a suite or sub-suite',
+    'after': 'Callback function that runs after the test suite',
+    'afterEach': 'Callback function that runs after each test case in a suite or sub-suite',
+    '.only': 'A feature that allows you to run only the specified suit, sub-suite, or test case',
+    '.skip': 'A feature that allows you to skip only the specified suite, sub-suite, or test case'
   };
 
   loginButton.addEventListener('click', event => {
@@ -399,7 +408,34 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Got the ${code.split('(')[1].replace(')', '')} environment variable`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'describe':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test suite`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'context':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test sub-suite`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
+                outputArea.classList.add('error');
+              }
+              break;
+            case 'it':
+              if (code.includes('(')) {
+                message = `Success:\n\n${code} // Defined the ${code.split('(')[1].replace(')', '')} test case`;
+                outputArea.classList.add('success');
+              } else {
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
