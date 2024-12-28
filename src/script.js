@@ -291,7 +291,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Visited URL ${code.split('(')[1].replace(')', '')}`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -300,7 +300,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Got element by selector ${code.split('(')[1].replace(')', '')}`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -309,7 +309,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Executed system command ${code.split('(')[1].replace(')', '')}`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -318,7 +318,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Logged message ${code.split('(')[1].replace(')', '')}`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -327,7 +327,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Paused Cypress execution`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -336,7 +336,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Got the document.title property of the active page`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -345,7 +345,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Got the DOM element that is currently focused`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -354,7 +354,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Loaded a fixed set of data located in the ${code.split('(')[1].replace(')', '')} file`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -363,7 +363,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Executed Node code via the ${code.split('(')[1].replace(')', '')} task`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -372,7 +372,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Reloaded the page`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -381,7 +381,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Read the ${code.split('(')[1].replace(')', '')} file and yielded its contents`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -390,7 +390,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Typed the ${code.split('(')[1].replace(')', '')} text`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
@@ -399,7 +399,7 @@ For more details, visit the <a href="https://docs.cypress.io/api/table-of-conten
                 message = `Success:\n\n${code} // Uploaded the ${code.split('(')[1].replace(')', '')} file`;
                 outputArea.classList.add('success');
               } else {
-                message = `Error:\n\nMissing parentheses on ${code} command`;
+                message = `Error:\n\nMissing parentheses on \`${code}\` command`;
                 outputArea.classList.add('error');
               }
               break;
