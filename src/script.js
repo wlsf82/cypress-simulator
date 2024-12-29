@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     runButton.disabled = true
     runButton.classList.add("loading")
-    runButton.innerHTML = "<div class=\"spinner\"></div> Running..."
+    runButton.innerHTML = "<div class='spinner'></div> Running..."
 
     outputArea.textContent = "Running... Please wait."
     outputArea.classList.remove("success")
