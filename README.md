@@ -38,7 +38,7 @@ To auto-fix breaking linting rules, run the `npm run lint:fix` command.
 
 ### Tests 🧪
 
-This project has end-to-end tests written with [Cypress](https://cypress.io/).
+This project has end-to-end and accessibility (a11y) tests written with [Cypress](https://cypress.io/) and [cypress-axe](https://www.npmjs.com/package/cypress-axe).
 
 To run them , simply run the `npm test` command (or `npm t`, for short.)
 
