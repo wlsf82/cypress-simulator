@@ -12,9 +12,9 @@
     <h1>Cypress Simulator</h1>
     <p>Explore and experiment with Cypress commands in real-time!</p>
     <div class="header-actions">
-      <div id="sandwich-menu" class="sandwich-menu">
+      <button id="sandwich-menu" class="sandwich-menu" aria-label="Open menu" aria-expanded="false" aria-controls="dropdown-menu" tabindex="0">
         <i data-lucide="menu"></i>
-      </div>
+      </button>
       <nav id="dropdown-menu" class="dropdown-menu">
         <button id="logoutButton">Logout</button>
       </nav>
@@ -47,9 +47,13 @@
     </section>
     <section class="output">
       <h2>Cypress Output</h2>
-      <div class="expand-collapse">
-        <i id="expandIcon" data-lucide="maximize-2"></i>
-        <i id="collapseIcon" data-lucide="minimize-2" style="display: none;"></i>
+      <div class="expand-collapse"
+           role="button"
+           tabindex="0"
+           aria-label="Toggle output size"
+           aria-expanded="false">
+        <i id="expandIcon" data-lucide="maximize-2" aria-hidden="true"></i>
+        <i id="collapseIcon" data-lucide="minimize-2" style="display: none;" aria-hidden="true"></i>
       </div>
       <pre id="outputArea" style="overflow-y: auto" tabindex="0"></pre>
     </section>

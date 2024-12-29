@@ -210,6 +210,7 @@ pre {
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.2s ease;
+  outline: none;
 }
 
 .expand-collapse:hover {
@@ -452,4 +453,16 @@ nav#menu button:hover {
   .login-form {
     padding: 20px;
   }
+}
+
+.expand-collapse:focus {
+  box-shadow: 0 0 0 3px rgba(39, 80, 203, 0.5);
+}
+
+.expand-collapse:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.expand-collapse:focus-visible {
+  box-shadow: 0 0 0 3px rgba(39, 80, 203, 0.5);
 }

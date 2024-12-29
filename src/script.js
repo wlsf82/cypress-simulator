@@ -184,11 +184,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sandwichMenu.addEventListener("click", () => {
     dropdownMenu.classList.toggle("show")
+    sandwichMenu.setAttribute("aria-expanded", dropdownMenu.classList.contains("show"))
   })
 
   document.addEventListener("click", event => {
     if (!sandwichMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
       dropdownMenu.classList.remove("show")
+      sandwichMenu.setAttribute("aria-expanded", "false")
     }
   })
 
@@ -208,23 +210,35 @@ document.addEventListener("DOMContentLoaded", () => {
     runButton.disabled = !codeInput.value.trim()
   })
 
-  expandCollapseDiv.addEventListener("click", event => {
-    const target = event.target
+  expandCollapseDiv.addEventListener("click", toggleExpansion)
+  expandCollapseDiv.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault()
+      toggleExpansion(event)
+    }
+  })
 
-    if (target.id === "expandIcon") {
-      outputSection.classList.add("expanded")
-      mainContent.style.position = "relative"
-      mainContent.style.overflow = "hidden"
-      document.getElementById("expandIcon").style.display = "none"
-      document.getElementById("collapseIcon").style.display = "block"
-    } else if (target.id === "collapseIcon") {
+  function toggleExpansion(event) {
+    const target = event.target.closest(".expand-collapse")
+    const expandIcon = document.getElementById("expandIcon")
+    const collapseIcon = document.getElementById("collapseIcon")
+
+    if (outputSection.classList.contains("expanded")) {
       outputSection.classList.remove("expanded")
       mainContent.style.position = ""
       mainContent.style.overflow = ""
-      document.getElementById("expandIcon").style.display = "block"
-      document.getElementById("collapseIcon").style.display = "none"
+      expandIcon.style.display = "block"
+      collapseIcon.style.display = "none"
+      target.setAttribute("aria-expanded", "false")
+    } else {
+      outputSection.classList.add("expanded")
+      mainContent.style.position = "relative"
+      mainContent.style.overflow = "hidden"
+      expandIcon.style.display = "none"
+      collapseIcon.style.display = "block"
+      target.setAttribute("aria-expanded", "true")
     }
-  })
+  }
 
   runButton.addEventListener("click", runCode)
 
