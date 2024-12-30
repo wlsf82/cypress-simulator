@@ -44,7 +44,7 @@ The Cypress Simulator is an interactive web application that allows users to exp
 
 Below is an example of how the application looks like in a Desktop viewport.
 
-![cypress-simulator](./cypress-simulator.png)
+![cypress-simulator](./assets/cypress-simulator.png)
 
 ## Summary
 
