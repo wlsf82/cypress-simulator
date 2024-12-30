@@ -2,10 +2,7 @@ const options = { viewportWidth: 1700, viewportHeight: 1024 }
 
 describe("Cypress Simulator - a11y checks", options, () => {
   beforeEach(() => {
-    cy.session("sessionId", () => {
-      cy.visit("./src/index.html")
-      cy.contains("button", "Login").click()
-    })
+    cy.login()
     cy.visit("./src/index.html")
     cy.injectAxe()
   })
