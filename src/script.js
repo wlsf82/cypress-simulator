@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // eslint-disable-next-line no-undef
   lucide.createIcons()
 
+  const urlParams = new URLSearchParams(window.location.search)
+  const chancesOfError = urlParams.get("chancesOfError")
+
   const checkExistingSession = () => {
     const sessionData = localStorage.getItem("cypressSimulatorSession")
     if (sessionData) {
@@ -291,7 +294,7 @@ Example: <strong><span class="cy">cy</span><span class="dot">.</span><span class
 For more commands and details, visit the <a href="https://docs.cypress.io/api/table-of-contents" target="_blank" rel="noopener noreferrer">official Cypress API documentation</a>.`
 
         outputArea.innerHTML = helpMessage
-      } else if (Math.random() < 0.01) {
+      } else if (Math.random() < (chancesOfError || 0.01)) {
         message = "There's a glitch in the Matrix."
         outputArea.classList.add("error")
 
