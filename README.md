@@ -8,13 +8,13 @@ Explore and experiment with Cypress commands in real-time!
 
 Read the following [doc](./docs/REQUIREMENTS.md) to understand all the Cypress Simulator application's functionalities.
 
-## Pre-requirements 📋
+## Pre-requisites 📋
 
 To clone and run this project, you will need:
 
 - [git](https://git-scm.com/downloads) (I've used version `2.42.1` while writing this doc)
-- [Node.js](https://nodejs.org/en/) (I've used version `v22.11.0` while writing this doc)
-- npm (I've used version `10.9.0` while writing this doc)
+- [Node.js](https://nodejs.org/en/) (I've used version `v22.12.0` while writing this doc)
+- npm (I've used version `11.0.0` while writing this doc)
 
 **Note:** When installing Node.js, npm is automatically installed too.
 
