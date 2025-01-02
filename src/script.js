@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const outputSection = document.querySelector(".output")
   const outputArea = document.getElementById("outputArea")
   const expandCollapseDiv = document.querySelector(".expand-collapse")
+  const cookieConsentBanner = document.getElementById("cookieConsent")
+  const acceptCookiesBtn = document.getElementById("acceptCookies")
+  const declineCookiesBtn = document.getElementById("declineCookies")
 
   // eslint-disable-next-line no-undef
   lucide.createIcons()
@@ -166,8 +169,36 @@ document.addEventListener("DOMContentLoaded", () => {
     "afterEach": "Callback function that runs after each test case in a suite or sub-suite",
     ".only": "A feature that allows you to run only the specified suit, sub-suite, or test case",
     ".skip": "A feature that allows you to skip only the specified suite, sub-suite, or test case",
-    "expect": "Chai’s expect command provides a readable, natural-language syntax for writing assertions, like expect(value).to.equal(expectedValue), making it easy to validate conditions in tests"
+    "expect": "Chai's expect command provides a readable, natural-language syntax for writing assertions, like expect(value).to.equal(expectedValue), making it easy to validate conditions in tests"
   }
+
+  const checkCookieConsent = () => {
+    const storedConsent = localStorage.getItem("cookieConsent")
+    const isLoggedIn = localStorage.getItem("cypressSimulatorSession")
+
+    if (!isLoggedIn) {
+      cookieConsentBanner.style.display = "none"
+      return
+    }
+
+    if (storedConsent === "accepted" || storedConsent === "declined") {
+      cookieConsentBanner.style.display = "none"
+    } else {
+      cookieConsentBanner.style.display = "block"
+    }
+  }
+
+  acceptCookiesBtn.addEventListener("click", () => {
+    localStorage.setItem("cookieConsent", "accepted")
+    cookieConsentBanner.style.display = "none"
+  })
+
+  declineCookiesBtn.addEventListener("click", () => {
+    localStorage.setItem("cookieConsent", "declined")
+    cookieConsentBanner.style.display = "none"
+  })
+
+  checkCookieConsent()
 
   loginButton.addEventListener("click", event => {
     event.preventDefault()
@@ -183,6 +214,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.style.display = "none"
     mainContent.style.display = "flex"
     sandwichMenu.style.display = "flex"
+
+    checkCookieConsent()
   })
 
   sandwichMenu.addEventListener("click", () => {
@@ -207,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mainContent.style.display = "none"
     sandwichMenu.style.display = "none"
     dropdownMenu.classList.remove("show")
+    cookieConsentBanner.style.display = "none"
   })
 
   codeInput.addEventListener("input", () => {

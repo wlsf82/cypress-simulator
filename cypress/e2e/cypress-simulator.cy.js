@@ -4,7 +4,11 @@ describe("Cypress Simulator", options, () => {
   beforeEach(() => {
     cy.clock()
     cy.login()
-    cy.visit("./src/index.html")
+    cy.visit("./src/index.html", {
+      onBeforeLoad(win) {
+        win.localStorage.setItem("cookieConsent", "accepted")
+      }
+    })
   })
 
   it("shows error for valid Cypress code without parentheses", () => {
@@ -68,7 +72,11 @@ describe("Cypress Simulator - Glitch in the Matrix", options, () => {
   beforeEach(() => {
     cy.clock()
     cy.login()
-    cy.visit("./src/index.html?chancesOfError=1")
+    cy.visit("./src/index.html?chancesOfError=1", {
+      onBeforeLoad(win) {
+        win.localStorage.setItem("cookieConsent", "accepted")
+      }
+    })
   })
 
   it("errors out with a glitch in the Matrix", () => {
@@ -78,5 +86,44 @@ describe("Cypress Simulator - Glitch in the Matrix", options, () => {
 
     cy.contains("#outputArea", "There's a glitch in the Matrix")
       .should("be.visible")
+  })
+})
+
+describe("Cypress Simulator - Cookies Consent", options, () => {
+  beforeEach(() => {
+    cy.login()
+    cy.visit("./src/index.html")
+  })
+
+  it("consents on the cookies usage", () => {
+    cy.get("#cookieConsent")
+      .as("cookieConsentBanner")
+      .find("button:contains('Accept')")
+      .click()
+
+    cy.get("@cookieConsentBanner").should("not.be.visible")
+    cy.window()
+      .its("localStorage.cookieConsent")
+      .should("be.equal", "accepted")
+  })
+
+  it("declines on the cookies usage", () => {
+    cy.get("#cookieConsent")
+      .as("cookieConsentBanner")
+      .find("button:contains('Decline')")
+      .click()
+
+    cy.get("@cookieConsentBanner").should("not.be.visible")
+    cy.window()
+      .its("localStorage.cookieConsent")
+      .should("be.equal", "declined")
+  })
+})
+
+describe("Cypress Simulator - Login Page", options, () => {
+  it("doesn't show the cookie consent banner on the login page", () => {
+    cy.visit("./src/index.html")
+
+    cy.get("#cookieConsent").should("not.be.visible")
   })
 })

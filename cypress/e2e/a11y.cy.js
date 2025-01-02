@@ -1,9 +1,13 @@
 const options = { viewportWidth: 1700, viewportHeight: 1024 }
 
-describe("Cypress Simulator - a11y checks", options, () => {
+describe("Cypress Simulator - A11y Checks", options, () => {
   beforeEach(() => {
     cy.login()
-    cy.visit("./src/index.html")
+    cy.visit("./src/index.html", {
+      onBeforeLoad(win) {
+        win.localStorage.setItem("cookieConsent", "accepted")
+      }
+    })
     cy.injectAxe()
   })
 
@@ -108,5 +112,18 @@ describe("Cypress Simulator - a11y checks", options, () => {
     cy.get(".expand-collapse").click()
 
     cy.get("#expandIcon").should("be.visible")
+  })
+})
+
+describe("Cypress Simulator - A11y Checks - Cookies Consent", options, () => {
+  beforeEach(() => {
+    cy.login()
+    cy.visit("./src/index.html")
+    cy.injectAxe()
+  })
+
+  it("finds no a11y issues on the cookies consent banner", () => {
+    cy.get("#cookieConsent").should("be.visible")
+    cy.checkA11y()
   })
 })

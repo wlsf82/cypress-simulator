@@ -440,6 +440,58 @@ nav#menu button:hover {
   background-color: #2e59a5;
 }
 
+.expand-collapse:focus {
+  box-shadow: 0 0 0 3px rgba(39, 80, 203, 0.5);
+}
+
+.expand-collapse:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.expand-collapse:focus-visible {
+  box-shadow: 0 0 0 3px rgba(39, 80, 203, 0.5);
+}
+
+.banner {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  z-index: 1000;
+  max-width: 700px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+
+.banner .content {
+  max-width: 700px;
+  text-align: center;
+  display: block;
+}
+
+.banner .content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  padding: 8px;
+}
+
+.banner .buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.banner .buttons button {
+  width: auto;
+  padding: 10px 20px;
+}
+
 @media (max-width: 768px) {
   .content {
     align-items: center;
@@ -453,16 +505,8 @@ nav#menu button:hover {
   .login-form {
     padding: 20px;
   }
-}
 
-.expand-collapse:focus {
-  box-shadow: 0 0 0 3px rgba(39, 80, 203, 0.5);
-}
-
-.expand-collapse:focus:not(:focus-visible) {
-  box-shadow: none;
-}
-
-.expand-collapse:focus-visible {
-  box-shadow: 0 0 0 3px rgba(39, 80, 203, 0.5);
+  .banner {
+    width: 88%;
+  }
 }
