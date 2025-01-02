@@ -1,6 +1,22 @@
 Cypress.Commands.add("login", () => {
-  cy.session("sessionId", () => {
+  const login = () => {
     cy.visit("./src/index.html")
     cy.contains("button", "Login").click()
-  })
+  }
+
+  const validate = () => {
+    cy.visit("./src/index.html")
+    cy.contains("button", "Login").should("not.be.visible")
+  }
+
+  const options = {
+    cacheAcrossSpecs: true,
+    validate
+  }
+
+  cy.session(
+    "sessionId",
+    login,
+    options
+  )
 })
