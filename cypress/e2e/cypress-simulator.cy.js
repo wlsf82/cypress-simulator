@@ -120,10 +120,39 @@ describe("Cypress Simulator - Cookies Consent", options, () => {
   })
 })
 
-describe("Cypress Simulator - Login Page", options, () => {
-  it("doesn't show the cookie consent banner on the login page", () => {
+describe("Cypress Simulator - Login and Captcha", options, () => {
+  beforeEach(() => {
     cy.visit("./src/index.html")
+  })
 
+  it("doesn't show the cookie consent banner on the login page", () => {
     cy.get("#cookieConsent").should("not.be.visible")
+  })
+
+  it("disabled the captcha verify button when no answer is provided or it's cleared", () => {
+    cy.contains("button", "Login").click()
+
+    cy.contains("button", "Verify").should("be.disabled")
+
+    cy.get("input[placeholder='Enter your answer']").type("1")
+
+    cy.contains("button", "Verify").should("be.enabled")
+
+    cy.get("input[placeholder='Enter your answer']").clear()
+
+    cy.contains("button", "Verify").should("be.disabled")
+  })
+
+  it("shows an error, clears the input, and re-generate the captcha when providing a wrong answer", () => {
+    cy.contains("button", "Login").click()
+
+    cy.get("input[placeholder='Enter your answer']").type("1000")
+    cy.contains("button", "Verify").click()
+
+    cy.contains(".error", "Incorrect answer, please try again.")
+      .should("be.visible")
+    cy.get("input[placeholder='Enter your answer']")
+      .should("have.value", "")
+    cy.contains("button", "Verify").should("be.disabled")
   })
 })
