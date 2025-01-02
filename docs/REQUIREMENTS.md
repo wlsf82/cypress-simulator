@@ -12,6 +12,19 @@ The Cypress Simulator is an interactive web application that allows users to exp
 - Login session persists for 30 days unless the user logs out
 - Users can log out via the sandwich menu in the header
 - No password is required for this demo application
+- CAPTCHA verification required during login for security
+  - Users must solve a simple math problem
+  - Multiple attempts allowed if answer is incorrect
+
+### Cookie Consent
+
+- Cookie consent banner shown to new users
+- Users must explicitly accept or decline cookies
+- Banner includes:
+  - Clear explanation of cookie usage
+  - Accept and Decline buttons
+  - Information about data tracking
+- User preference is remembered for future visits
 
 ### Graphical User Interface (GUI)
 
@@ -61,5 +74,7 @@ The tool is designed to be:
 - Educational (includes examples and help)
 - Accessible (works on any modern web browser)
 - Convenient (remembers you're logged in for 30 days)
+- Secure (includes CAPTCHA verification)
+- Privacy-focused (explicit cookie consent required)
 
 No technical knowledge is required to start using the simulator, making it perfect for beginners learning Cypress testing.
