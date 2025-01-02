@@ -63,3 +63,20 @@ describe("Cypress Simulator", options, () => {
     cy.get("textarea").should("have.value", "")
   })
 })
+
+describe("Cypress Simulator - Glitch in the Matrix", options, () => {
+  beforeEach(() => {
+    cy.clock()
+    cy.login()
+    cy.visit("./src/index.html?chancesOfError=1")
+  })
+
+  it("errors out with a glitch in the Matrix", () => {
+    cy.get("textarea").type("cy.get('.btn-green')")
+    cy.contains("button", "Run").click()
+    cy.tick(6000)
+
+    cy.contains("#outputArea", "There's a glitch in the Matrix")
+      .should("be.visible")
+  })
+})
