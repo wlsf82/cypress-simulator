@@ -213,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const operator = Math.random() < 0.5 ? "+" : "-"
 
     captchaChallenge.textContent = `What is ${num1} ${operator} ${num2}?`
+    verifyCaptchaButton.disabled = true
 
     return operator === "+" ? num1 + num2 : num1 - num2
   }
@@ -257,11 +258,13 @@ document.addEventListener("DOMContentLoaded", () => {
       sandwichMenu.style.display = "flex"
       captchaError.style.display = "none"
       captchaInput.value = ""
+      verifyCaptchaButton.disabled = true
 
       checkCookieConsent()
     } else {
       captchaError.style.display = "block"
       captchaInput.value = ""
+      verifyCaptchaButton.disabled = true
       window.expectedCaptchaResult = generateCaptcha()
     }
   })
@@ -270,6 +273,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.key === "Enter") {
       verifyCaptchaButton.click()
     }
+  })
+
+  captchaInput.addEventListener("input", () => {
+    verifyCaptchaButton.disabled = !captchaInput.value.trim()
   })
 
   sandwichMenu.addEventListener("click", () => {
