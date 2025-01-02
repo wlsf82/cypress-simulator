@@ -3,7 +3,7 @@ const options = { viewportWidth: 1700, viewportHeight: 1024 }
 describe("Cypress Simulator - A11y Checks", options, () => {
   beforeEach(() => {
     cy.login()
-    cy.visit("./src/index.html", {
+    cy.visit("./src/index.html?skipCaptcha=true", {
       onBeforeLoad(win) {
         win.localStorage.setItem("cookieConsent", "accepted")
       }
@@ -118,7 +118,7 @@ describe("Cypress Simulator - A11y Checks", options, () => {
 describe("Cypress Simulator - A11y Checks - Cookies Consent", options, () => {
   beforeEach(() => {
     cy.login()
-    cy.visit("./src/index.html")
+    cy.visit("./src/index.html?skipCaptcha=true")
     cy.injectAxe()
   })
 

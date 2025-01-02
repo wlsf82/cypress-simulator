@@ -1,6 +1,6 @@
 Cypress.Commands.add("login", () => {
   const login = () => {
-    cy.visit("./src/index.html")
+    cy.visit("./src/index.html?skipCaptcha=true")
     cy.contains("button", "Login").click()
   }
 

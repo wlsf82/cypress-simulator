@@ -4,7 +4,7 @@ describe("Cypress Simulator", options, () => {
   beforeEach(() => {
     cy.clock()
     cy.login()
-    cy.visit("./src/index.html", {
+    cy.visit("./src/index.html?skipCaptcha=true", {
       onBeforeLoad(win) {
         win.localStorage.setItem("cookieConsent", "accepted")
       }
@@ -72,7 +72,7 @@ describe("Cypress Simulator - Glitch in the Matrix", options, () => {
   beforeEach(() => {
     cy.clock()
     cy.login()
-    cy.visit("./src/index.html?chancesOfError=1", {
+    cy.visit("./src/index.html?chancesOfError=1&skipCaptcha=true", {
       onBeforeLoad(win) {
         win.localStorage.setItem("cookieConsent", "accepted")
       }
@@ -92,7 +92,7 @@ describe("Cypress Simulator - Glitch in the Matrix", options, () => {
 describe("Cypress Simulator - Cookies Consent", options, () => {
   beforeEach(() => {
     cy.login()
-    cy.visit("./src/index.html")
+    cy.visit("./src/index.html?skipCaptcha=true")
   })
 
   it("consents on the cookies usage", () => {

@@ -26,6 +26,16 @@
       <button>Login</button>
     </form>
   </main>
+  <main id="captcha" style="display: none;">
+    <h2>Security Check</h2>
+    <div class="captcha-container">
+      <p>Please solve this simple math problem to continue:</p>
+      <div class="captcha-challenge"></div>
+      <input type="number" id="captchaInput" placeholder="Enter your answer" aria-label="Captcha answer">
+      <button id="verifyCaptcha">Verify</button>
+      <p id="captchaError" class="error" style="display: none;">Incorrect answer, please try again.</p>
+    </div>
+  </main>
   <main class="content">
     <section class="commands">
       <h2>Useful Commands</h2>

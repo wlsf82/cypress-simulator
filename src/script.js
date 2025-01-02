@@ -13,12 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const cookieConsentBanner = document.getElementById("cookieConsent")
   const acceptCookiesBtn = document.getElementById("acceptCookies")
   const declineCookiesBtn = document.getElementById("declineCookies")
+  const captchaSection = document.getElementById("captcha")
+  const captchaChallenge = document.querySelector(".captcha-challenge")
+  const captchaInput = document.getElementById("captchaInput")
+  const verifyCaptchaButton = document.getElementById("verifyCaptcha")
+  const captchaError = document.getElementById("captchaError")
 
   // eslint-disable-next-line no-undef
   lucide.createIcons()
 
   const urlParams = new URLSearchParams(window.location.search)
   const chancesOfError = urlParams.get("chancesOfError")
+  const skipCaptcha = urlParams.get("skipCaptcha") === "true"
 
   const checkExistingSession = () => {
     const sessionData = localStorage.getItem("cypressSimulatorSession")
@@ -26,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const { expiresAt } = JSON.parse(sessionData)
       if (new Date().getTime() < expiresAt) {
         loginForm.style.display = "none"
+        captchaSection.style.display = "none"
         mainContent.style.display = "flex"
         sandwichMenu.style.display = "flex"
       } else {
@@ -200,22 +207,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
   checkCookieConsent()
 
+  function generateCaptcha() {
+    const num1 = Math.floor(Math.random() * 10) + 1
+    const num2 = Math.floor(Math.random() * 10) + 1
+    const operator = Math.random() < 0.5 ? "+" : "-"
+
+    captchaChallenge.textContent = `What is ${num1} ${operator} ${num2}?`
+
+    return operator === "+" ? num1 + num2 : num1 - num2
+  }
+
   loginButton.addEventListener("click", event => {
     event.preventDefault()
 
-    const expiresAt = new Date()
-    expiresAt.setDate(expiresAt.getDate() + 30)
+    if (skipCaptcha) {
+      const expiresAt = new Date()
+      expiresAt.setDate(expiresAt.getDate() + 30)
 
-    localStorage.setItem("cypressSimulatorSession", JSON.stringify({
-      loggedIn: true,
-      expiresAt: expiresAt.getTime()
-    }))
+      localStorage.setItem("cypressSimulatorSession", JSON.stringify({
+        loggedIn: true,
+        expiresAt: expiresAt.getTime()
+      }))
 
-    loginForm.style.display = "none"
-    mainContent.style.display = "flex"
-    sandwichMenu.style.display = "flex"
+      loginForm.style.display = "none"
+      mainContent.style.display = "flex"
+      sandwichMenu.style.display = "flex"
+      checkCookieConsent()
+    } else {
+      loginForm.style.display = "none"
+      captchaSection.style.display = "flex"
+      window.expectedCaptchaResult = generateCaptcha()
+    }
+  })
 
-    checkCookieConsent()
+  verifyCaptchaButton.addEventListener("click", () => {
+    const userAnswer = parseInt(captchaInput.value, 10)
+
+    if (userAnswer === window.expectedCaptchaResult) {
+      const expiresAt = new Date()
+      expiresAt.setDate(expiresAt.getDate() + 30)
+
+      localStorage.setItem("cypressSimulatorSession", JSON.stringify({
+        loggedIn: true,
+        expiresAt: expiresAt.getTime()
+      }))
+
+      captchaSection.style.display = "none"
+      mainContent.style.display = "flex"
+      sandwichMenu.style.display = "flex"
+      captchaError.style.display = "none"
+      captchaInput.value = ""
+
+      checkCookieConsent()
+    } else {
+      captchaError.style.display = "block"
+      captchaInput.value = ""
+      window.expectedCaptchaResult = generateCaptcha()
+    }
+  })
+
+  captchaInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      verifyCaptchaButton.click()
+    }
   })
 
   sandwichMenu.addEventListener("click", () => {
@@ -237,10 +291,13 @@ document.addEventListener("DOMContentLoaded", () => {
     outputArea.innerHTML = ""
     runButton.disabled = true
     loginForm.style.display = "flex"
+    captchaSection.style.display = "none"
     mainContent.style.display = "none"
     sandwichMenu.style.display = "none"
     dropdownMenu.classList.remove("show")
     cookieConsentBanner.style.display = "none"
+    captchaError.style.display = "none"
+    captchaInput.value = ""
   })
 
   codeInput.addEventListener("input", () => {
