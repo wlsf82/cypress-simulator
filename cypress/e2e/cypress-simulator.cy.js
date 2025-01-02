@@ -10,7 +10,7 @@ describe("Cypress Simulator", options, () => {
   it("shows error for valid Cypress code without parentheses", () => {
     cy.get("textarea").type("cy.get")
     cy.contains("button", "Run").click()
-    cy.tick(2000)
+    cy.tick(6000)
 
     cy.get("#outputArea")
       .should("contain", "Error:")
@@ -42,7 +42,7 @@ describe("Cypress Simulator", options, () => {
   it("disabled the run button when logging off then logging in again", () => {
     cy.get("textarea").type("cy.log('Yo!')")
     cy.contains("button", "Run").click()
-    cy.tick(2000)
+    cy.tick(6000)
 
     cy.get("#sandwich-menu").click()
     cy.contains("button", "Logout").click()
@@ -54,7 +54,7 @@ describe("Cypress Simulator", options, () => {
   it("clears the code output when logging off then logging in again", () => {
     cy.get("textarea").type("cy.log('Yo!')")
     cy.contains("button", "Run").click()
-    cy.tick(2000)
+    cy.tick(6000)
 
     cy.get("#sandwich-menu").click()
     cy.contains("button", "Logout").click()

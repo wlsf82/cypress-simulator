@@ -11,7 +11,7 @@ describe("Cypress Simulator - a11y checks", options, () => {
     cy.get("textarea").type("cy.log('Yo!')")
     cy.contains("button", "Run").click()
 
-    cy.get("#outputArea")
+    cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Success:")
       .and("contain", "cy.log('Yo!') // Logged message 'Yo!'")
 
@@ -22,7 +22,7 @@ describe("Cypress Simulator - a11y checks", options, () => {
     cy.get("textarea").type("cy.contains('Hello, World!')")
     cy.contains("button", "Run").click()
 
-    cy.get("#outputArea")
+    cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Warning:")
       .and("contain", "The `cy.contains` command has not been implemented yet.")
 
@@ -33,7 +33,7 @@ describe("Cypress Simulator - a11y checks", options, () => {
     cy.get("textarea").type("console.log('Hello, World!')")
     cy.contains("button", "Run").click()
 
-    cy.get("#outputArea")
+    cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Error:")
       .and("contain", "Invalid Cypress command: console.log('Hello, World!')")
 
@@ -44,7 +44,7 @@ describe("Cypress Simulator - a11y checks", options, () => {
     cy.get("textarea").type("help")
     cy.contains("button", "Run").click()
 
-    cy.get("#outputArea")
+    cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Common Cypress commands and examples:")
       .and("contain","For more commands and details, visit the official Cypress API documentation.")
     cy.contains("#outputArea a", "official Cypress API documentation")
@@ -64,7 +64,11 @@ describe("Cypress Simulator - a11y checks", options, () => {
 
     cy.checkA11y()
 
-    cy.contains("button", "Running...").should("not.exist")
+    cy.contains(
+      "button",
+      "Running...",
+      { timeout:  6000 }
+    ).should("not.exist")
     cy.contains("button", "Run").should("be.visible")
   })
 
@@ -93,7 +97,7 @@ describe("Cypress Simulator - a11y checks", options, () => {
 
     cy.get(".expand-collapse").click()
 
-    cy.get("#outputArea")
+    cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Common Cypress commands and examples:")
       .and("contain","For more commands and details, visit the official Cypress API documentation.")
 
