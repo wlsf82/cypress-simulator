@@ -15,15 +15,21 @@ jobs:
   tests:
     needs: static-analysis
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run Cypress tests 🧪
+      - name: Run Cypress tests in parallel 🧪
         uses: cypress-io/github-action@v6
         with:
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
   deploy:
     needs: tests
     runs-on: ubuntu-22.04
