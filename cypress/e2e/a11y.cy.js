@@ -1,6 +1,4 @@
-const options = { viewportWidth: 1700, viewportHeight: 1024 }
-
-describe("Cypress Simulator - A11y Checks", options, () => {
+describe("Cypress Simulator - A11y Checks", () => {
   beforeEach(() => {
     cy.login()
     cy.visit("./src/index.html?skipCaptcha=true&chancesOfError=0", {
@@ -115,7 +113,7 @@ describe("Cypress Simulator - A11y Checks", options, () => {
   })
 })
 
-describe("Cypress Simulator - A11y Checks - Cookies Consent", options, () => {
+describe("Cypress Simulator - A11y Checks - Cookies Consent", () => {
   beforeEach(() => {
     cy.login()
     cy.visit("./src/index.html?skipCaptcha=true")
@@ -128,7 +126,7 @@ describe("Cypress Simulator - A11y Checks - Cookies Consent", options, () => {
   })
 })
 
-describe("Cypress Simulator - Captcha", options, () => {
+describe("Cypress Simulator - Captcha", () => {
   beforeEach(() => {
     cy.visit("./src/index.html")
     cy.injectAxe()

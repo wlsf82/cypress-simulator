@@ -1,6 +1,4 @@
-const options = { viewportWidth: 1700, viewportHeight: 1024 }
-
-describe("Cypress Simulator", options, () => {
+describe("Cypress Simulator", () => {
   beforeEach(() => {
     cy.clock()
     cy.login()
@@ -68,7 +66,7 @@ describe("Cypress Simulator", options, () => {
   })
 })
 
-describe("Cypress Simulator - Glitch in the Matrix", options, () => {
+describe("Cypress Simulator - Glitch in the Matrix", () => {
   beforeEach(() => {
     cy.clock()
     cy.login()
@@ -89,7 +87,7 @@ describe("Cypress Simulator - Glitch in the Matrix", options, () => {
   })
 })
 
-describe("Cypress Simulator - Cookies Consent", options, () => {
+describe("Cypress Simulator - Cookies Consent", () => {
   beforeEach(() => {
     cy.login()
     cy.visit("./src/index.html?skipCaptcha=true")
@@ -120,7 +118,7 @@ describe("Cypress Simulator - Cookies Consent", options, () => {
   })
 })
 
-describe("Cypress Simulator - Login and Captcha", options, () => {
+describe("Cypress Simulator - Login and Captcha", () => {
   beforeEach(() => {
     cy.visit("./src/index.html")
   })
