@@ -127,3 +127,30 @@ describe("Cypress Simulator - A11y Checks - Cookies Consent", options, () => {
     cy.checkA11y()
   })
 })
+
+describe("Cypress Simulator - Captcha", options, () => {
+  beforeEach(() => {
+    cy.visit("./src/index.html")
+    cy.injectAxe()
+  })
+
+  it("finds no a11y issues on all captcha view states (button enabled/disabled and error)", () => {
+    cy.contains("button", "Login").click()
+
+    cy.checkA11y()
+
+    cy.get("input[placeholder='Enter your answer']").type("1000")
+
+    cy.checkA11y()
+
+    cy.contains("button", "Verify").click()
+
+    cy.contains(".error", "Incorrect answer, please try again.")
+      .should("be.visible")
+    cy.get("input[placeholder='Enter your answer']")
+      .should("have.value", "")
+    cy.contains("button", "Verify").should("be.disabled")
+
+    cy.checkA11y()
+  })
+})

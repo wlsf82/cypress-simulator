@@ -142,17 +142,4 @@ describe("Cypress Simulator - Login and Captcha", options, () => {
 
     cy.contains("button", "Verify").should("be.disabled")
   })
-
-  it("shows an error, clears the input, and re-generate the captcha when providing a wrong answer", () => {
-    cy.contains("button", "Login").click()
-
-    cy.get("input[placeholder='Enter your answer']").type("1000")
-    cy.contains("button", "Verify").click()
-
-    cy.contains(".error", "Incorrect answer, please try again.")
-      .should("be.visible")
-    cy.get("input[placeholder='Enter your answer']")
-      .should("have.value", "")
-    cy.contains("button", "Verify").should("be.disabled")
-  })
 })
