@@ -140,6 +140,7 @@ describe("Cypress Simulator - Captcha", options, () => {
     cy.checkA11y()
 
     cy.get("input[placeholder='Enter your answer']").type("1000")
+    cy.contains("button", "Verify").should("be.enabled")
 
     cy.checkA11y()
 
