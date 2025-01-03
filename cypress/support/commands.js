@@ -1,5 +1,5 @@
 Cypress.Commands.add("login", () => {
-  const login = () => {
+  const setup = () => {
     cy.visit("./src/index.html?skipCaptcha=true")
     cy.contains("button", "Login").click()
   }
@@ -16,7 +16,7 @@ Cypress.Commands.add("login", () => {
 
   cy.session(
     "sessionId",
-    login,
+    setup,
     options
   )
 })
