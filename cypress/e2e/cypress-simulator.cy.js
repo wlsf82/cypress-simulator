@@ -17,6 +17,7 @@ describe("Cypress Simulator", () => {
     cy.get("#outputArea")
       .should("contain", "Error:")
       .and("contain", "Missing parentheses on `cy.get` command")
+      .and("be.visible")
   })
 
   it("checks the run button disabled and enabled states", () => {

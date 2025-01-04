@@ -16,6 +16,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Success:")
       .and("contain", "cy.log('Yo!') // Logged message 'Yo!'")
+      .and("be.visible")
 
     cy.checkA11y(".success")
   })
@@ -27,6 +28,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Warning:")
       .and("contain", "The `cy.contains` command has not been implemented yet.")
+      .and("be.visible")
 
     cy.checkA11y(".warning")
   })
@@ -38,6 +40,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Error:")
       .and("contain", "Invalid Cypress command: console.log('Hello, World!')")
+      .and("be.visible")
 
     cy.checkA11y(".error")
   })
@@ -49,10 +52,12 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Common Cypress commands and examples:")
       .and("contain","For more commands and details, visit the official Cypress API documentation.")
+      .and("be.visible")
     cy.contains("#outputArea a", "official Cypress API documentation")
       .should("have.attr", "href", "https://docs.cypress.io/api/table-of-contents")
       .and("have.attr", "target", "_blank")
       .and("have.attr", "rel", "noopener noreferrer")
+      .and("be.visible")
 
     cy.checkA11y("pre")
   })
@@ -63,6 +68,8 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.contains("button", "Run").click()
 
     cy.contains("button", "Running...").should("be.visible")
+    cy.contains("#outputArea", "Running... Please wait.")
+      .should("be.visible")
 
     cy.checkA11y()
 
@@ -72,6 +79,12 @@ describe("Cypress Simulator - A11y Checks", () => {
       { timeout:  6000 }
     ).should("not.exist")
     cy.contains("button", "Run").should("be.visible")
+    cy.contains("#outputArea", "Running... Please wait.", { timeout: 6000})
+      .should("not.exist")
+    cy.get("#outputArea")
+      .should("contain", "Success:")
+      .and("contain", "cy.log('Yo!') // Logged message 'Yo!'")
+      .and("be.visible")
   })
 
   it("finds no a11y issues when showing the logout button", () => {
@@ -102,6 +115,7 @@ describe("Cypress Simulator - A11y Checks", () => {
     cy.get("#outputArea", { timeout: 6000})
       .should("contain", "Common Cypress commands and examples:")
       .and("contain","For more commands and details, visit the official Cypress API documentation.")
+      .and("be.visible")
 
     cy.get("#collapseIcon").should("be.visible")
 
