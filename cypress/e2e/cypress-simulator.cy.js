@@ -63,7 +63,7 @@ describe("Cypress Simulator", () => {
     cy.contains("button", "Logout").click()
     cy.contains("button", "Login").click()
 
-    cy.get("pre").should("not.contain", "cy.log('Yo!')")
+    cy.get("#outputArea").should("not.contain", "cy.log('Yo!')")
   })
 })
 
