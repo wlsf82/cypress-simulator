@@ -30,8 +30,12 @@
     <h2>Security Check</h2>
     <div class="captcha-container">
       <p>Please solve this simple math problem to continue:</p>
-      <div class="captcha-challenge"></div>
-      <input type="number" id="captchaInput" placeholder="Enter your answer" aria-label="Captcha answer">
+      <div class="captcha-challenge" id="captcha-challenge" role="alert" aria-live="polite"></div>
+      <input type="number"
+             id="captchaInput"
+             placeholder="Enter your answer"
+             aria-label="Captcha answer"
+             aria-describedby="captcha-challenge">
       <button id="verifyCaptcha" disabled>Verify</button>
       <p id="captchaError" class="error" style="display: none;" role="alert" aria-live="polite">Incorrect answer, please try again.</p>
     </div>
