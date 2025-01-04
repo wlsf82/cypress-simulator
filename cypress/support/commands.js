@@ -6,7 +6,8 @@ Cypress.Commands.add("login", () => {
 
   const validate = () => {
     cy.visit("./src/index.html")
-    cy.contains("button", "Login").should("not.be.visible")
+    cy.contains("button", "Login", { timeout: 1000 })
+      .should("not.be.visible")
   }
 
   const options = {
