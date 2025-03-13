@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Cypress.minimatch": "Cypress automatically includes minimatch and exposes it as Cypress.minimatch",
     "Cypress.Promise": "Cypress automatically includes Bluebird and exposes it as Cypress.Promise",
     "Cypress.sinon": "Cypress automatically includes Sinon.JS and exposes it as Cypress.sinon",
+    "Cypress.stop": "Stop the Cypress App on the current machine while tests are running.",
     "describe": "Describes and wraps a test suite implementation",
     "context": "Describes and wraps a test sub-suite implementation",
     "it": "Describes and wraps a test case implementation",
